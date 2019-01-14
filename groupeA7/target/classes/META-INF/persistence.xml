@@ -1,0 +1,18 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="groupeA7JTA" transaction-type="JTA">
+	<jta-data-source>jdbc/groupeA7</jta-data-source>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+	</persistence-unit>
+	
+	<persistence-unit name="groupeA7" transaction-type="RESOURCE_LOCAL">
+	<jta-data-source>jdbc/groupeA7</jta-data-source>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dba7"/>
+			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+			<property name="javax.persistence.jdbc.user" value="test"/>
+			<property name="javax.persistence.jdbc.password" value="test"/>
+		</properties>
+	</persistence-unit>
+</persistence>
