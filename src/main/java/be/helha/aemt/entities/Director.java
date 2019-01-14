@@ -64,6 +64,14 @@ public class Director {
 		this.firstname = firstname;
 	}
 
+	public Long getIdDirector() {
+		return idDirector;
+	}
+
+	public void setIdDirector(Long idDirector) {
+		this.idDirector = idDirector;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -85,7 +93,7 @@ public class Director {
 	}
 	
 	public String getTitle() {
-		if(gender == 'm')
+		if(gender == 'm' || gender == 'M')
 			return "Mr";
 		else
 			return "Mme";

@@ -16,6 +16,7 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idStudent;
+	private String firstname;
 	private String name;
 	private String group;
 	private boolean coordBroadcast;
@@ -51,6 +52,14 @@ public class Student {
 
 	public void setIdStudent(Long idStudent) {
 		this.idStudent = idStudent;
+	}
+	
+	public String getFirstname() {
+		return firstname;
+	}
+	
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public String getName() {

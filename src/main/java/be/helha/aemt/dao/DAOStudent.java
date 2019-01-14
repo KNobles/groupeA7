@@ -26,7 +26,7 @@ public class DAOStudent {
 	
 	public Student selectId(long id) {
 		Query query;
-		String sSelect="SELECT s FROM student s WHERE s.id=?1";
+		String sSelect="SELECT s FROM student s WHERE s.idStudent=?1";
 		query=em.createQuery(sSelect);
 		query.setParameter(1, id);
 		Student s = (Student)query.getSingleResult();
