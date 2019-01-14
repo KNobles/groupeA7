@@ -7,6 +7,12 @@ import javax.ejb.Stateless;
 import be.helha.aemt.dao.DAOAdmin;
 import be.helha.aemt.entities.Admin;
 
+/**
+ * 
+ * @author Nobles
+ *
+ */
+
 @Stateless
 public class ManagementAdminEJB implements IManagementAdminEJB {
 

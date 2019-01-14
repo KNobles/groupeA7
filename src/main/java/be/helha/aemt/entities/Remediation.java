@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * 
@@ -18,7 +19,8 @@ public class Remediation {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idRemediation;
 	
-	private Long idCourse;
+	@ManyToOne
+	private Course course;
 	
 	private String dateRem;
 	
@@ -26,9 +28,9 @@ public class Remediation {
 		
 	}
 	
-	public Remediation(Long idRemediation, Long idCourse, String dateRem) {
+	public Remediation(Long idRemediation, Course course, String dateRem) {
 		this.idRemediation = idRemediation;
-		this.idCourse = idCourse;
+		this.course = course;
 		this.dateRem = dateRem;
 	}
 
@@ -40,12 +42,12 @@ public class Remediation {
 		this.idRemediation = idRemediation;
 	}
 
-	public Long getIdCourse() {
-		return idCourse;
+	public Course getCourse() {
+		return course;
 	}
 
-	public void setIdCourse(Long idCourse) {
-		this.idCourse = idCourse;
+	public void setCourse(Course idCourse) {
+		this.course = idCourse;
 	}
 
 	public String getDateRem() {
@@ -58,7 +60,7 @@ public class Remediation {
 
 	@Override
 	public String toString() {
-		return "Remediation [idRemediation=" + idRemediation + ", idCourse=" + idCourse + ", dateRem=" + dateRem + "]";
+		return "Remediation [idRemediation=" + idRemediation + ", Course: " + course.getName() + ", dateRem=" + dateRem + "]";
 	}
 	
 	

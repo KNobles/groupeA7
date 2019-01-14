@@ -7,6 +7,12 @@ import javax.ejb.Stateless;
 import be.helha.aemt.dao.DAOInterview;
 import be.helha.aemt.entities.Interview;
 
+/**
+ * 
+ * @author Nobles
+ *
+ */
+
 @Stateless
 public class ManagementInterviewEJB implements IManagementInterviewEJB {
 
