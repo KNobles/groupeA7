@@ -18,7 +18,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/MarcelLaMenace/payara5/glassfish/lib/gf-client.jar"/>
-	<classpathentry kind="lib" path="C:/Users/MarcelLaMenace/payara5/glassfish/lib/mysql-connector-java-5.1.47.jar"/>
+	<classpathentry kind="lib" path="E:/3BI/AEMT/payara5/glassfish/lib/gf-client.jar"/>
+	<classpathentry kind="lib" path="E:/3BI/AEMT/payara5/glassfish/lib/mysql-connector-java-5.1.47.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
