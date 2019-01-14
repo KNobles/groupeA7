@@ -21,7 +21,7 @@ public class Seminary {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idSeminary;
 	
-	@ManyToMany(cascade = CascadeType.PERSIST) //à vérfifier
+	@ManyToMany(cascade = CascadeType.PERSIST) 
 	private List<Section> sections; 
 	
 	private String date; //quand aura lieu le séminaire /!\ regex lors de l'encodage /!\ ainsi on saura récupérer le quadri

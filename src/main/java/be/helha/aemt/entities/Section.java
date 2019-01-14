@@ -1,7 +1,9 @@
 package be.helha.aemt.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * 
@@ -11,6 +13,7 @@ import javax.persistence.Id;
 @Entity
 public class Section {
 	
+	@ManyToOne(cascade = CascadeType.PERSIST) 
 	private Director director;
 	private String code;
 	@Id

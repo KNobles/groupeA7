@@ -21,7 +21,7 @@ public class Course {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idCourse;
 	private String name;
-	@ManyToMany(cascade = CascadeType.PERSIST) //à vérifier
+	@ManyToMany(cascade = CascadeType.PERSIST)
 	private List<Section> sections;
 	
 	public Course() {
