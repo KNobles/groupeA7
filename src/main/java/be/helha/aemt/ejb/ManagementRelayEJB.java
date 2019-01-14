@@ -6,44 +6,46 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import be.helha.aemt.dao.DAOStudent;
-import be.helha.aemt.entities.Student;
+import be.helha.aemt.dao.DAORelay;
+import be.helha.aemt.entities.Relay;
 
 @LocalBean
 @Stateless
-public class ManagementStudentEJB implements IManagementStudentEJB{
+public class ManagementRelayEJB implements IManagementRelayEJB {
 	
 	@EJB
-	private DAOStudent dao;
+	private DAORelay dao;
 
 	@Override
-	public List<Student> selectAll() {
+	public List<Relay> selectAll() {
 		// TODO Auto-generated method stub
 		return dao.selectAll();
 	}
 
 	@Override
-	public Student add(Student s) {
+	public Relay add(Relay r) {
 		// TODO Auto-generated method stub
-		return dao.add(s);
+		return dao.add(r);
 	}
 
 	@Override
-	public Student selectId(long id) {
+	public Relay selectId(long id) {
 		// TODO Auto-generated method stub
 		return dao.selectId(id);
 	}
 
 	@Override
-	public Student update(Student s) {
+	public Relay update(Relay r) {
 		// TODO Auto-generated method stub
-		return dao.updateStudent(s);
+		return dao.updateRelay(r);
 	}
 
 	@Override
-	public void delete(Student s) {
+	public void delete(Relay r) {
 		// TODO Auto-generated method stub
-		dao.deleteStudent(s);
+		dao.deleteRelay(r);
 	}
+
+	
 
 }

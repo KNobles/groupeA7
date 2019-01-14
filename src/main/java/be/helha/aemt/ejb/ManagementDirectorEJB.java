@@ -6,44 +6,44 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import be.helha.aemt.dao.DAOStudent;
-import be.helha.aemt.entities.Student;
+import be.helha.aemt.dao.DAODirector;
+import be.helha.aemt.entities.Director;
 
 @LocalBean
 @Stateless
-public class ManagementStudentEJB implements IManagementStudentEJB{
+public class ManagementDirectorEJB implements IManagementDirectorEJB{
 	
 	@EJB
-	private DAOStudent dao;
+	private DAODirector dao;
 
 	@Override
-	public List<Student> selectAll() {
+	public List<Director> selectAll() {
 		// TODO Auto-generated method stub
 		return dao.selectAll();
 	}
 
 	@Override
-	public Student add(Student s) {
+	public Director add(Director d) {
 		// TODO Auto-generated method stub
-		return dao.add(s);
+		return dao.add(d);
 	}
 
 	@Override
-	public Student selectId(long id) {
+	public Director selectId(long id) {
 		// TODO Auto-generated method stub
 		return dao.selectId(id);
 	}
 
 	@Override
-	public Student update(Student s) {
+	public Director update(Director d) {
 		// TODO Auto-generated method stub
-		return dao.updateStudent(s);
+		return dao.updateDirector(d);
 	}
 
 	@Override
-	public void delete(Student s) {
+	public void delete(Director d) {
 		// TODO Auto-generated method stub
-		dao.deleteStudent(s);
+		dao.deleteDirector(d);
 	}
 
 }
