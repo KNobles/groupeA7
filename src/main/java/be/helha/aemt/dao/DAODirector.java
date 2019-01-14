@@ -27,7 +27,7 @@ public class DAODirector {
 	
 	public Director selectId(long id) {
 		Query query;
-		String sSelect="SELECT d FROM director d WHERE s.id=?1";
+		String sSelect="SELECT d FROM director d WHERE d.idDirector=?1";
 		query=em.createQuery(sSelect);
 		query.setParameter(1, id);
 		Director s = (Director)query.getSingleResult();
