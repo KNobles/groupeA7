@@ -7,6 +7,12 @@ import javax.ejb.Stateless;
 import be.helha.aemt.dao.DAORemediation;
 import be.helha.aemt.entities.Remediation;
 
+/**
+ * 
+ * @author Nobles
+ *
+ */
+
 @Stateless
 public class ManagementRemediationEJB implements IManagementRemediationEJB{
 

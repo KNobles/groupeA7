@@ -6,6 +6,12 @@ import javax.ejb.Remote;
 
 import be.helha.aemt.entities.Interview;
 
+/**
+ * 
+ * @author Nobles
+ *
+ */
+
 @Remote
 public interface IManagementInterviewEJB {
 
