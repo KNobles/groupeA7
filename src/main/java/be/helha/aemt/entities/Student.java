@@ -1,9 +1,11 @@
 package be.helha.aemt.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * 
@@ -26,14 +28,16 @@ public class Student {
 	private String noteRel;
 	private String dateRel;
 	
-	private Long idRelay;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private Relay relay;
 	
-	private String nameSection;
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private Section section;
 	
-	public Student() {};
+	public Student() {}
 	
 	public Student(String name, String group, boolean coord, boolean photo, String noteDir, String dateDir, String noteRel, 
-			String dateRel, long idRelay) {
+			String dateRel, Section section) {
 		super();
 		this.name = name;
 		this.group=group;
@@ -43,7 +47,7 @@ public class Student {
 		this.dateDir = dateDir;
 		this.noteRel = noteRel;
 		this.dateRel = dateRel;
-		this.idRelay = idRelay;
+		this.section = section;
 	}
 
 	public Long getIdStudent() {
@@ -126,21 +130,25 @@ public class Student {
 		this.dateRel = dateRel;
 	}
 
-	public Long getIdRelay() {
-		return idRelay;
+	public Relay getRelay() {
+		return relay;
 	}
 
-	public void setIdRelay(Long idRelay) {
-		this.idRelay = idRelay;
+	public void setRelay(Relay relay) {
+		this.relay = relay;
 	}
 
-	public String getNameSection() {
-		return nameSection;
+	public Section getSection() {
+		return section;
 	}
 
-	public void setNameSection(String nameSection) {
-		this.nameSection = nameSection;
+	public void setSection(Section section) {
+		this.section = section;
 	}
+	
+	
+
+
 	
 	
 	
