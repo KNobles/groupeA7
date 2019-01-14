@@ -22,16 +22,18 @@ public class Director {
 	private String firstname;
 	private String password;
 	private String mail;
+	private char gender;
 	
 	public Director() {
 		
 	}
 	
-	public Director(String name, String firstname, String password, String mail) {
+	public Director(String name, String firstname, String password, String mail, char gender) {
 		this.name = name;
 		this.firstname = firstname;
 		this.password = password;
 		this.mail = mail;
+		this.gender = gender;
 	}
 
 	public Long getIdRelay() {
@@ -53,6 +55,10 @@ public class Director {
 	public String getFirstname() {
 		return firstname;
 	}
+	
+	public char getGender() {
+		return gender;
+	}
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
@@ -72,6 +78,17 @@ public class Director {
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+	
+	public String getTitle() {
+		if(gender == 'm')
+			return "Mr";
+		else
+			return "Mme";
 	}
 
 }
