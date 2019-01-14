@@ -1,9 +1,12 @@
 package be.helha.aemt.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * 
@@ -17,8 +20,10 @@ public class Tutoring {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idTutoring;
 	
+	@OneToMany(cascade = CascadeType.PERSIST)
 	private Student student; //tutorat individuel ou multiple? liste?
-	//Annotation
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Course course;
 	
 	public Tutoring() {
@@ -63,7 +68,7 @@ public class Tutoring {
 	@Override
 	public String toString() {
 		return "Tutorat pour le cours de : " + this.course.getName() + "\n"
-				+ "Concerne l'étudiant : " + this.student.getName() + " " + this.student;
+				+ "Concerne l'étudiant : " + this.student.getName() + " " + this.student.getFirstname();
 	}
 	
 }
