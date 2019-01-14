@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * 
@@ -18,7 +19,8 @@ public class Interview {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idInterview;
 	
-	private Long idStudent;
+	@ManyToOne
+	private Student student;
 	private String nameRel;
 	private String date;
 	private String resolutions;
@@ -28,10 +30,10 @@ public class Interview {
 		
 	}
 	
-	public Interview(Long idInterview, Long idStudent, String nameRel, String date, String resolutions,
+	public Interview(Long idInterview, Student student, String nameRel, String date, String resolutions,
 			String monitoring) {
 		this.idInterview = idInterview;
-		this.idStudent = idStudent;
+		this.student = student;
 		this.nameRel = nameRel;
 		this.date = date;
 		this.resolutions = resolutions;
@@ -46,12 +48,12 @@ public class Interview {
 		this.idInterview = idInterview;
 	}
 
-	public Long getIdStudent() {
-		return idStudent;
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setIdStudent(Long idStudent) {
-		this.idStudent = idStudent;
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 	public String getNameRel() {
@@ -88,7 +90,8 @@ public class Interview {
 
 	@Override
 	public String toString() {
-		return "Interview [idInterview=" + idInterview + ", idStudent=" + idStudent + ", nameRel=" + nameRel + ", date="
+		return "Interview [idInterview=" + idInterview + ", idStudent=" + student.getFirstname() + " " +
+	student.getName() + " " + student.getGroup() + ", nameRel=" + nameRel + ", date="
 				+ date + ", resolutions=" + resolutions + ", monitoring=" + monitoring + "]";
 	}
 	
