@@ -2,10 +2,13 @@ package be.helha.aemt.ejb;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import be.helha.aemt.dao.DAOInterview;
 import be.helha.aemt.entities.Interview;
 
-public class ManagementInterviewEJB implements IManagementInterview {
+@Stateless
+public class ManagementInterviewEJB implements IManagementInterviewEJB {
 
 	private DAOInterview daoInterview;
 	

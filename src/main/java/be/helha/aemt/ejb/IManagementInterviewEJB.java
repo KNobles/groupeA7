@@ -7,7 +7,7 @@ import javax.ejb.Remote;
 import be.helha.aemt.entities.Interview;
 
 @Remote
-public interface IManagementInterview {
+public interface IManagementInterviewEJB {
 
 	public List<Interview> selectAll();
 	

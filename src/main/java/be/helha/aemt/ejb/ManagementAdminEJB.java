@@ -2,9 +2,12 @@ package be.helha.aemt.ejb;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import be.helha.aemt.dao.DAOAdmin;
 import be.helha.aemt.entities.Admin;
 
+@Stateless
 public class ManagementAdminEJB implements IManagementAdminEJB {
 
 	private DAOAdmin daoAdmin;
