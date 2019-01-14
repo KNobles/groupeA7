@@ -1,5 +1,7 @@
 package be.helha.aemt.entities;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +23,7 @@ public class Tutoring {
 	private Long idTutoring;
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
-	private Student student; //tutorat individuel ou multiple? liste?
+	private List<Student> students; //tutorat individuel ou multiple? liste?
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Course course;
@@ -30,8 +32,8 @@ public class Tutoring {
 		
 	}
 	
-	public Tutoring(Student student, Course course) {
-		this.student = student;
+	public Tutoring(List<Student> students, Course course) {
+		this.students = students;
 		this.course = course;
 	}
 
@@ -43,12 +45,12 @@ public class Tutoring {
 		this.idTutoring = idTutoring;
 	}
 
-	public Student getStudent() {
-		return this.student;
+	public List<Student> getStudent() {
+		return this.students;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setStudent(List<Student> students) {
+		this.students = students;
 	}
 
 	public Course getCourse() {
@@ -63,12 +65,12 @@ public class Tutoring {
 	 * Exemple:
 	 * 
 	 * Tutorat pour le cours de : Français
-	 * Concerne l'étudiant : Nobles Kevin
+	 * Concerne l'étudiant : Nobles Kevin (IG-I1)
 	 */
 	@Override
 	public String toString() {
 		return "Tutorat pour le cours de : " + this.course.getName() + "\n"
-				+ "Concerne l'étudiant : " + this.student.getName() + " " + this.student.getFirstname();
+				+ "Concerne l'étudiant : " + this.students; //le toString de Student doit donc renvoyer : nom, prénom (orientation (section) - classe)
 	}
 	
 }
