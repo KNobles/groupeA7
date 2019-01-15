@@ -1,5 +1,7 @@
 package be.helha.aemt.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +14,7 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class User {
+public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -37,7 +39,7 @@ public class User {
 	}
 
 	public Long getIdRelay() {
-		return idUser;
+		return this.idUser;
 	}
 
 	public void setIdRelay(Long idRelay) {
@@ -45,7 +47,7 @@ public class User {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -53,11 +55,11 @@ public class User {
 	}
 
 	public String getFirstname() {
-		return firstname;
+		return this.firstname;
 	}
 	
 	public char getGender() {
-		return gender;
+		return this.gender;
 	}
 
 	public void setFirstname(String firstname) {
@@ -65,7 +67,7 @@ public class User {
 	}
 
 	public Long getIdDirector() {
-		return idUser;
+		return this.idUser;
 	}
 
 	public void setIdDirector(Long idDirector) {
@@ -73,7 +75,7 @@ public class User {
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
@@ -81,7 +83,7 @@ public class User {
 	}
 
 	public String getMail() {
-		return mail;
+		return this.mail;
 	}
 
 	public void setMail(String mail) {
@@ -93,10 +95,9 @@ public class User {
 	}
 	
 	public String getTitle() {
-		if(gender == 'm' || gender == 'M')
+		if(this.gender == 'm' || this.gender == 'M')
 			return "Mr";
-		else
-			return "Mme";
+		return "Mme";
 	}
 
 }
