@@ -66,12 +66,12 @@ public class User implements Serializable {
 		this.firstname = firstname;
 	}
 
-	public Long getIdDirector() {
+	public Long getIdUser() {
 		return this.idUser;
 	}
 
-	public void setIdDirector(Long idDirector) {
-		this.idUser = idDirector;
+	public void setIdUser(Long id) {
+		this.idUser = id;
 	}
 
 	public String getPassword() {
@@ -100,4 +100,28 @@ public class User implements Serializable {
 		return "Mme";
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((this.mail == null) ? 0 : this.mail.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (this.mail == null) {
+			if (other.mail != null)
+				return false;
+		} else if (!this.mail.equals(other.mail))
+			return false;
+		return true;
+	}
 }
