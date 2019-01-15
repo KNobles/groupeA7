@@ -2,6 +2,7 @@ package be.helha.aemt.ejb;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import be.helha.aemt.dao.DAORemediation;
@@ -13,6 +14,7 @@ import be.helha.aemt.entities.Remediation;
  *
  */
 
+@LocalBean
 @Stateless
 public class ManagementRemediationEJB implements IManagementRemediationEJB{
 

@@ -3,11 +3,14 @@ package be.helha.aemt.ejb;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
 
 import be.helha.aemt.dao.DAOCoordinator;
 import be.helha.aemt.entities.Coordinator;
 
-
+@LocalBean
+@Stateless
 public class ManagementCoordinatorEJB implements IManagementCoordinatorEJB {
 	
 	@EJB

@@ -12,7 +12,7 @@ import be.helha.aemt.entities.Student;
 @Stateless
 public class DAOStudent {
 	
-	@PersistenceContext(unitName="rocroixJTA")
+	@PersistenceContext(unitName="groupeA7JTA")
 	private EntityManager em;
 	
 	public List<Student> selectAll(){
