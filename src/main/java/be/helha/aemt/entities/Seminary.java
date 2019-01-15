@@ -68,6 +68,18 @@ public class Seminary {
 	public void setTheme(String theme) {
 		this.theme = theme;
 	}
+	
+	public boolean addSection(Section s) {
+		if(this.sections.contains(s)) { //on vérifie si la section est déjà associée au séminaire
+			return false; //Le séminaire est déjà lié à la section
+		}
+		this.sections.add(s); //nouvelle section associée au séminaire
+		return true;
+	}
+	
+	public boolean removeSection(Section s) {
+		return this.sections.remove(s);
+	}
 
 	/**
 	 * Exemple : 

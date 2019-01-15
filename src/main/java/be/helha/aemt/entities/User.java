@@ -1,11 +1,16 @@
 package be.helha.aemt.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * 
@@ -20,32 +25,30 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idUser;
 	
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	private Group group;
+	
+	@OneToMany(cascade = CascadeType.PERSIST)
+	private List<Section> sections; //la section dont le directeur ou le relais est responsable mais un relais peut intervenir dans plusieurs sections
+	
 	private String name;
 	private String firstname;
-	private String password;
+	private String password; // /!\ le directeur ne doit pas encoder directement les mots de passe des nouveaux utilisateurs
 	private String mail;
-	private Section section; //la section dont le directeur ou le relais est responsable
 	private char gender;
 	
 	public User() {
 		
 	}
 	
-	public User(String name, String firstname, String password, String mail, char gender, Section section) {
+	public User(Group group, String name, String firstname, String password, char gender, List<Section> sections) {
+		this.group = group;
 		this.name = name;
 		this.firstname = firstname;
 		this.password = password;
-		this.mail = mail;
+		this.mail = name.toLowerCase() + "." + firstname.toLowerCase().charAt(0) + "@helha.be";
 		this.gender = gender;
-		this.section = section;
-	}
-
-	public Long getIdRelay() {
-		return this.idUser;
-	}
-
-	public void setIdRelay(Long idRelay) {
-		this.idUser = idRelay;
+		this.sections = sections;
 	}
 
 	public String getName() {
@@ -96,23 +99,39 @@ public class User implements Serializable {
 		this.gender = gender;
 	}
 	
-	public Section getSection() {
-		return this.section;
+	public Group getGroup() {
+		return this.group;
 	}
 
-	public void setSection(Section section) {
-		this.section = section;
+	public void setGroup(Group group) {
+		this.group = group;
+	}
+
+	public List<Section> getSections() {
+		return this.sections;
+	}
+
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
 	}
 	
-	public String getTitle() {
-		if(this.gender == 'm' || this.gender == 'M')
-			return "Mr";
-		return "Mme";
+	public boolean addSection(Section s) {
+		if(this.sections.contains(s)) { //on vérifie si la section est déjà dans les accès de l'utilisateur
+			return false; //l'utilisateur a déjà accès à la section
+		}
+		this.sections.add(s); //nouvelle section associée à l'utilisateur
+		return true;
+	}
+	
+	public boolean removeSection(Section s) {
+		return this.sections.remove(s);
 	}
 
-	//renvoie le genre suivi du nom et du prénom
+	//renvoie le genre suivi du nom
 	public String toString() {
-		return getTitle() + " " + this.name + ", " + this.firstname;
+		if(this.gender == 'm' || this.gender == 'M')
+			return "Mr " + this.name;
+		return "Mme " + this.name;
 	}
 
 	@Override

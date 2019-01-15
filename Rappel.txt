@@ -1,3 +1,8 @@
 Créér/Copier un fichier classpath pour la fin.
 
 RONFLEX : refaire design navbar.xhtml avec primefaces
+
+Optimisation : Interface pour ajouter / supprimer les sections? 
+	-> ces méthodes sont redondantes dans les classes "Course", "Seminary" et "User"
+	
+Ne pas touhcer seminaire.xhtml

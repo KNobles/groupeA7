@@ -41,6 +41,7 @@ public class DAOUser {
 	public void delete(User u) {
 		Query query = this.em.createQuery("DELETE u FROM User u WHERE mail =?1");
 		query.setParameter(1, u.getMail());
+
 		query.executeUpdate();
 	}
 
