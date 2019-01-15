@@ -1,5 +1,6 @@
 package be.helha.aemt.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,10 +20,10 @@ public class Interview {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idInterview;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Student student;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	private User user;
 	private String date;
 	private String resolutions;

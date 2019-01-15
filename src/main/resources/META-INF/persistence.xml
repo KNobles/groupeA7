@@ -1,6 +1,6 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="groupeA7JTA" transaction-type="JTA"> <!-- les transactions sont gérées par le serveur payara -->
-	<jta-data-source>jdbc/groupeA7</jta-data-source> <!-- nom indiqué dans la configuration de payara pour la JDBC resource -->
+	<jta-data-source>jdbc/groupeA7</jta-data-source>
 	
 		<class>be.helha.aemt.entities.Coordinator</class>
 		<class>be.helha.aemt.entities.Course</class>
@@ -15,8 +15,9 @@
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	</persistence-unit>
-	
 	<persistence-unit name="groupeA7" transaction-type="RESOURCE_LOCAL"> <!-- même nom que dans le Main pour tester localement -->
+	<!-- EN APPLICATION 2 TIERS
+	<jta-data-source>jdbc/groupeA7</jta-data-source>
 	
 		<class>be.helha.aemt.entities.Coordinator</class>
 		<class>be.helha.aemt.entities.Course</class>
@@ -30,10 +31,13 @@
 		<class>be.helha.aemt.entities.User</class>
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+	 -->
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dba7"/>
+			
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+			
 			<property name="javax.persistence.jdbc.user" value="ga7"/>
 			<property name="javax.persistence.jdbc.password" value="6426"/>
 		</properties>
