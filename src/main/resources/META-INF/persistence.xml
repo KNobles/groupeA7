@@ -2,8 +2,9 @@
 	<persistence-unit name="groupeA7JTA" transaction-type="JTA"> <!-- les transactions sont gérées par le serveur payara -->
 	<jta-data-source>jdbc/groupeA7</jta-data-source>
 	
-		<class>be.helha.aemt.entities.Coordinator</class>
+		<class>be.helha.aemt.entities.Coordinator</class> <!-- à supprimer? -->
 		<class>be.helha.aemt.entities.Course</class>
+		<class>be.helha.aemt.entities.Group</class>
 		<class>be.helha.aemt.entities.Interview</class>
 		<class>be.helha.aemt.entities.Remediation</class>
 		<class>be.helha.aemt.entities.Report</class>
