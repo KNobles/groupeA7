@@ -53,6 +53,18 @@ public class Course {
 	public void setSections(List<Section> sections) {
 		this.sections = sections;
 	}
+	
+	public boolean addSection(Section s) {
+		if(this.sections.contains(s)) { //on vérifie si la section est déjà associée au cours
+			return false; //Le cours est déjà lié à la section
+		}
+		this.sections.add(s); //nouvelle section associée au cours
+		return true;
+	}
+	
+	public boolean removeSection(Section s) {
+		return this.sections.remove(s);
+	}
 
 	/**
 	 * Exemple : 

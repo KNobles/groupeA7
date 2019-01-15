@@ -37,7 +37,6 @@ public class User implements Serializable {
 	private String mail;
 	private char gender;
 	
-	
 	public User() {
 		
 	}
@@ -50,14 +49,6 @@ public class User implements Serializable {
 		this.mail = name.toLowerCase() + "." + firstname.toLowerCase().charAt(0) + "@helha.be";
 		this.gender = gender;
 		this.sections = sections;
-	}
-
-	public Long getIdRelay() {
-		return this.idUser;
-	}
-
-	public void setIdRelay(Long idRelay) {
-		this.idUser = idRelay;
 	}
 
 	public String getName() {
@@ -122,6 +113,18 @@ public class User implements Serializable {
 
 	public void setSections(List<Section> sections) {
 		this.sections = sections;
+	}
+	
+	public boolean addSection(Section s) {
+		if(this.sections.contains(s)) { //on vérifie si la section est déjà dans les accès de l'utilisateur
+			return false; //l'utilisateur a déjà accès à la section
+		}
+		this.sections.add(s); //nouvelle section associée à l'utilisateur
+		return true;
+	}
+	
+	public boolean removeSection(Section s) {
+		return this.sections.remove(s);
 	}
 
 	//renvoie le genre suivi du nom
