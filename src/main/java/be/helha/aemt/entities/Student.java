@@ -23,10 +23,6 @@ public class Student {
 	private String group;
 	private boolean coordBroadcast;
 	private boolean photoBroadcast;
-	private String noteDir;
-	private String dateDir;
-	private String noteRel;
-	private String dateRel;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private User user;
@@ -36,22 +32,17 @@ public class Student {
 	
 	public Student() {}
 	
-	public Student(String name, String group, boolean coord, boolean photo, String noteDir, String dateDir, String noteRel, 
-			String dateRel, Section section) {
+	public Student(String name, String group, boolean coord, boolean photo, Section section) {
 		super();
 		this.name = name;
 		this.group=group;
 		this.coordBroadcast = coord;
 		this.photoBroadcast = photo;
-		this.noteDir = noteDir;
-		this.dateDir = dateDir;
-		this.noteRel = noteRel;
-		this.dateRel = dateRel;
 		this.section = section;
 	}
 
 	public Long getIdStudent() {
-		return idStudent;
+		return this.idStudent;
 	}
 
 	public void setIdStudent(Long idStudent) {
@@ -59,7 +50,7 @@ public class Student {
 	}
 	
 	public String getFirstname() {
-		return firstname;
+		return this.firstname;
 	}
 	
 	public void setFirstname(String firstname) {
@@ -67,7 +58,7 @@ public class Student {
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -75,7 +66,7 @@ public class Student {
 	}
 
 	public String getGroup() {
-		return group;
+		return this.group;
 	}
 
 	public void setGroup(String group) {
@@ -83,7 +74,7 @@ public class Student {
 	}
 
 	public boolean isCoordBroadcast() {
-		return coordBroadcast;
+		return this.coordBroadcast;
 	}
 
 	public void setCoordBroadcast(boolean coordBroadcast) {
@@ -91,47 +82,15 @@ public class Student {
 	}
 
 	public boolean isPhotoBroadcast() {
-		return photoBroadcast;
+		return this.photoBroadcast;
 	}
 
 	public void setPhotoBroadcast(boolean photoBroadcast) {
 		this.photoBroadcast = photoBroadcast;
 	}
 
-	public String getNoteDir() {
-		return noteDir;
-	}
-
-	public void setNoteDir(String noteDir) {
-		this.noteDir = noteDir;
-	}
-
-	public String getDateDir() {
-		return dateDir;
-	}
-
-	public void setDateDir(String dateDir) {
-		this.dateDir = dateDir;
-	}
-
-	public String getNoteRel() {
-		return noteRel;
-	}
-
-	public void setNoteRel(String noteRel) {
-		this.noteRel = noteRel;
-	}
-
-	public String getDateRel() {
-		return dateRel;
-	}
-
-	public void setDateRel(String dateRel) {
-		this.dateRel = dateRel;
-	}
-
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {
@@ -139,19 +98,17 @@ public class Student {
 	}
 
 	public Section getSection() {
-		return section;
+		return this.section;
 	}
 
 	public void setSection(Section section) {
 		this.section = section;
 	}
 	
-	
+	public String toString() {
+		return this.name + ", " + this.firstname + " (" + this.section.getName() + " - " +this.group + ")";
+	}
 
 
-	
-	
-	
-	
 
 }
