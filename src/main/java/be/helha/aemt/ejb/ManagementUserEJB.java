@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
-import be.helha.aemt.dao.DAODirector;
+import be.helha.aemt.dao.DAOUser;
 import be.helha.aemt.entities.User;
 
 @LocalBean
@@ -14,7 +14,7 @@ import be.helha.aemt.entities.User;
 public class ManagementUserEJB implements IManagementUserEJB{
 	
 	@EJB
-	private DAODirector dao;
+	private DAOUser dao;
 
 	@Override
 	public List<User> selectAll() {
@@ -37,13 +37,13 @@ public class ManagementUserEJB implements IManagementUserEJB{
 	@Override
 	public User update(User d) {
 		// TODO Auto-generated method stub
-		return dao.updateDirector(d);
+		return dao.update(d);
 	}
 
 	@Override
 	public void delete(User d) {
 		// TODO Auto-generated method stub
-		dao.deleteDirector(d);
+		dao.delete(d);
 	}
 
 }

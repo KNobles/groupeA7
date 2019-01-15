@@ -11,18 +11,18 @@ import be.helha.aemt.entities.User;
 import be.helha.aemt.entities.Student;
 
 @Stateless
-public class DAODirector {
+public class DAOUser {
 	
 	@PersistenceContext(unitName="groupeA7JTA")
 	private EntityManager em;
 	
 	public List<User> selectAll(){
-		return em.createQuery("SELECT d FROM director d").getResultList();
+		return em.createQuery("SELECT u FROM user u").getResultList();
 	}
 	
-	public User add(User s) {
-		em.persist(s);
-		return s;
+	public User add(User u) {
+		em.persist(u);
+		return u;
 	}
 	
 	public User selectId(long id) {
@@ -30,21 +30,21 @@ public class DAODirector {
 		String sSelect="SELECT d FROM director d WHERE d.idDirector=?1";
 		query=em.createQuery(sSelect);
 		query.setParameter(1, id);
-		User s = (User)query.getSingleResult();
+		User u = (User)query.getSingleResult();
 		em.clear();
-		return s;
+		return u;
 	}
 	
 	//Update
-		public User updateDirector(User d) {
-			return em.merge(d);
-		}
-		
-		//Delete
-		public void deleteDirector(User d) {
-			Query query = this.em.createQuery("DELETE d FROM director d WHERE idDirector =?1");
-			query.setParameter(1, d.getIdDirector());
-			query.executeUpdate();
-		}
+	public User update(User u) {
+		return em.merge(u);
+	}
+	
+	//Delete
+	public void delete(User u) {
+		Query query = this.em.createQuery("DELETE d FROM director d WHERE idDirector =?1");
+		query.setParameter(1, u.getIdDirector());
+		query.executeUpdate();
+	}
 
 }

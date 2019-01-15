@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui"> 
+    
+	<head>
+	
+	
+	</head>
+	<body>
+		<h:form>
+			<p:growl id="Menu"/>
+			
+			<p:menubar>
+				<p:submenu label="Section">
+					<p:menuitem value="Assistant de direction"/>
+					<p:menuitem value="Comptabilité"/>
+					<p:menuitem value="Informatique de gestion"/>
+				</p:submenu>
+				
+				<p:menuitem value="Séminaires"/>
+				<p:menuitem value="Tutorat"/>
+				<p:menuitem value="Remédiations"/>
+				<p:menuitem value="A propos"/>
+				
+				<commandButton type="button" value="Logout"/>
+			</p:menubar>
+		</h:form>	
+	</body>
+</html>
