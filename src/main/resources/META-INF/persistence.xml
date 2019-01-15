@@ -1,25 +1,34 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="groupeA7JTA" transaction-type="JTA">
+	<persistence-unit name="groupeA7JTA" transaction-type="JTA"> <!-- les transactions sont gérées par le serveur payara -->
 	<jta-data-source>jdbc/groupeA7</jta-data-source>
+	
+		<class>be.helha.aemt.entities.Coordinator</class>
+		<class>be.helha.aemt.entities.Course</class>
+		<class>be.helha.aemt.entities.Interview</class>
+		<class>be.helha.aemt.entities.Remediation</class>
+		<class>be.helha.aemt.entities.Report</class>
+		<class>be.helha.aemt.entities.Section</class>
+		<class>be.helha.aemt.entities.Seminary</class>
+		<class>be.helha.aemt.entities.Student</class>
+		<class>be.helha.aemt.entities.Tutoring</class>
+		<class>be.helha.aemt.entities.User</class>
+		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 	</persistence-unit>
 	
-	<persistence-unit name="groupeA7" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="groupeA7" transaction-type="RESOURCE_LOCAL"> <!-- même nom que dans le Main pour tester localement -->
 	<jta-data-source>jdbc/groupeA7</jta-data-source>
 	
-		<class>be.helha.aemt.entities.Admin</class>
 		<class>be.helha.aemt.entities.Coordinator</class>
 		<class>be.helha.aemt.entities.Course</class>
-		<class>be.helha.aemt.entities.Director</class>
 		<class>be.helha.aemt.entities.Interview</class>
-		<class>be.helha.aemt.entities.Relay</class>
 		<class>be.helha.aemt.entities.Remediation</class>
-		<class>be.helha.aemt.entities.RemediationStudent</class>
+		<class>be.helha.aemt.entities.Report</class>
 		<class>be.helha.aemt.entities.Section</class>
 		<class>be.helha.aemt.entities.Seminary</class>
-		<class>be.helha.aemt.entities.SeminaryStudent</class>
 		<class>be.helha.aemt.entities.Student</class>
 		<class>be.helha.aemt.entities.Tutoring</class>
+		<class>be.helha.aemt.entities.User</class>
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
