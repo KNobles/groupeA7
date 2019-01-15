@@ -29,7 +29,7 @@ public class ManagementUserEJB implements IManagementUserEJB{
 	}
 
 	@Override
-	public User selectId(long id) {
+	public User selectId(String id) {
 		// TODO Auto-generated method stub
 		return dao.selectId(id);
 	}

@@ -25,7 +25,7 @@ public class DAOInterview {
 	
 	public Interview selectId(long id) {
 		Query query;
-		String sSelectId="SELECT i FROM Interview i WHERE i.id=?1";
+		String sSelectId="SELECT i FROM Interview i WHERE i.idInterview=?1";
 		query=em.createQuery(sSelectId);
 		query.setParameter(1,id);
 		Interview i =(Interview) query.getSingleResult();

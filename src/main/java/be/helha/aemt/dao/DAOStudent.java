@@ -16,7 +16,7 @@ public class DAOStudent {
 	private EntityManager em;
 	
 	public List<Student> selectAll(){
-		return em.createQuery("SELECT s FROM student s").getResultList();
+		return em.createQuery("SELECT s FROM Student s").getResultList();
 	}
 	
 	public Student add(Student s) {
@@ -26,7 +26,7 @@ public class DAOStudent {
 	
 	public Student selectId(long id) {
 		Query query;
-		String sSelect="SELECT s FROM student s WHERE s.idStudent=?1";
+		String sSelect="SELECT s FROM Student s WHERE s.idStudent=?1";
 		query=em.createQuery(sSelect);
 		query.setParameter(1, id);
 		Student s = (Student)query.getSingleResult();

@@ -2,12 +2,14 @@ package be.helha.aemt.dao;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entities.Remediation;
 
+@Stateless
 public class DAORemediation {
 	@PersistenceContext(unitName="groupeA7JTA")
 	private EntityManager em;	
@@ -22,7 +24,7 @@ public class DAORemediation {
 	
 	public Remediation selectId(long id) {
 		Query query;
-		String sSelectId="SELECT r FROM Remediation r WHERE r.id=?1";
+		String sSelectId="SELECT r FROM Remediation r WHERE r.idRemediation=?1";
 		query=em.createQuery(sSelectId);
 		query.setParameter(1,id);
 		Remediation r =(Remediation) query.getSingleResult();

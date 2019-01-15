@@ -13,7 +13,7 @@ public interface IManagementUserEJB {
 	
 	public User add(User d);
 	
-	public User selectId(long id);
+	public User selectId(String id);
 	
 	public User update(User d);
 	

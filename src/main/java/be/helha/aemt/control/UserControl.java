@@ -1,5 +1,6 @@
 package be.helha.aemt.control;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -11,8 +12,13 @@ import be.helha.aemt.entities.User;
 
 @RequestScoped
 @Named
-public class UserControl {
+public class UserControl implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@EJB
 	private ManagementUserEJB bean;
 	private User user = new User();
@@ -45,4 +51,6 @@ public class UserControl {
 //		this.user = user;
 //		return "detail.xhtml";
 //	}
+	
+	
 }
