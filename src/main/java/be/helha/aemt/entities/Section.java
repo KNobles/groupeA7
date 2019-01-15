@@ -1,9 +1,7 @@
 package be.helha.aemt.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 /**
  * 
@@ -13,28 +11,17 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Section {
 	
-	@ManyToOne(cascade = CascadeType.PERSIST) 
-	private User director;
-	private String code;
 	@Id
+	private String code;
 	private String name;
 
 	public Section() {
 		
 	}
 	
-	public Section(String name, String code, User director) {
+	public Section(String name, String code) {
 		this.name = name;
 		this.code = code;
-		this.director = director;
-	}
-
-	public User getDirector() {
-		return this.director;
-	}
-
-	public void setDirector(User director) {
-		this.director = director;
 	}
 
 	public String getCode() {
@@ -57,26 +44,20 @@ public class Section {
 	 * Exemple : 
 	 * 
 	 * Section "Informatique de gestion" [IG]
-	 * Directeur : Mme Duroisin
 	 */
 	@Override
 	public String toString() {
-		return "Section \"" + this.name + "\" [ " + this.code + "]\n"
-				+ "Directeur : " + this.director.getTitle() + this.director.getName() + "\n";
+		return "Section \"" + this.name + "\" [ " + this.code + "]\n";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
+		result = prime * result + ((this.code == null) ? 0 : this.code.hashCode());
 		return result;
 	}
 
-	/**
-	 * Une section se différencie sur son identifiant, c'est-à-dire le nom de la section
-	 * nécessaire car on a des listes de sections dans séminaire et cours, en cas de vérification d'ajout de doublon
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -86,10 +67,10 @@ public class Section {
 		if (getClass() != obj.getClass())
 			return false;
 		Section other = (Section) obj;
-		if (this.name == null) {
-			if (other.name != null)
+		if (this.code == null) {
+			if (other.code != null)
 				return false;
-		} else if (!this.name.equals(other.name))
+		} else if (!this.code.equals(other.code))
 			return false;
 		return true;
 	}

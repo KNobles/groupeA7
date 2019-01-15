@@ -24,18 +24,20 @@ public class User implements Serializable {
 	private String firstname;
 	private String password;
 	private String mail;
+	private Section section; //la section dont le directeur ou le relais est responsable
 	private char gender;
 	
 	public User() {
 		
 	}
 	
-	public User(String name, String firstname, String password, String mail, char gender) {
+	public User(String name, String firstname, String password, String mail, char gender, Section section) {
 		this.name = name;
 		this.firstname = firstname;
 		this.password = password;
 		this.mail = mail;
 		this.gender = gender;
+		this.section = section;
 	}
 
 	public Long getIdRelay() {
@@ -94,10 +96,23 @@ public class User implements Serializable {
 		this.gender = gender;
 	}
 	
+	public Section getSection() {
+		return this.section;
+	}
+
+	public void setSection(Section section) {
+		this.section = section;
+	}
+	
 	public String getTitle() {
 		if(this.gender == 'm' || this.gender == 'M')
 			return "Mr";
 		return "Mme";
+	}
+
+	//renvoie le genre suivi du nom et du prénom
+	public String toString() {
+		return getTitle() + " " + this.name + ", " + this.firstname;
 	}
 
 	@Override
@@ -107,7 +122,10 @@ public class User implements Serializable {
 		result = prime * result + ((this.mail == null) ? 0 : this.mail.hashCode());
 		return result;
 	}
-
+	
+	/**
+	 * comparaison basée sur l'adresse mail unique (matricule helha)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

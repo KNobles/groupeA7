@@ -28,13 +28,16 @@ public class Tutoring {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Course course;
 	
+	private String dateTime;
+	
 	public Tutoring() {
 		
 	}
 	
-	public Tutoring(List<Student> students, Course course) {
+	public Tutoring(List<Student> students, Course course, String dateTime) {
 		this.students = students;
 		this.course = course;
+		this.dateTime = dateTime;
 	}
 
 	public Long getIdTutoring() {
@@ -45,14 +48,6 @@ public class Tutoring {
 		this.idTutoring = idTutoring;
 	}
 
-	public List<Student> getStudent() {
-		return this.students;
-	}
-
-	public void setStudent(List<Student> students) {
-		this.students = students;
-	}
-
 	public Course getCourse() {
 		return this.course;
 	}
@@ -61,16 +56,72 @@ public class Tutoring {
 		this.course = course;
 	}
 
+	public List<Student> getStudents() {
+		return this.students;
+	}
+
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+	public String getDateTime() {
+		return this.dateTime;
+	}
+
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
+	}
+
 	/**
 	 * Exemple:
 	 * 
-	 * Tutorat pour le cours de : Français
+	 * Tutorat du 15/03/2019 - 15h00 pour le cours de : Français
 	 * Concerne l'étudiant : Nobles Kevin (IG-I1)
 	 */
 	@Override
 	public String toString() {
-		return "Tutorat pour le cours de : " + this.course.getName() + "\n"
+		return "Tutorat du " + this.dateTime + " pour le cours de : " + this.course.getName() + "\n"
 				+ "Concerne l'étudiant : " + this.students; 
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((this.course == null) ? 0 : this.course.hashCode());
+		result = prime * result + ((this.dateTime == null) ? 0 : this.dateTime.hashCode());
+		result = prime * result + ((this.students == null) ? 0 : this.students.hashCode());
+		return result;
+	}
+
+	/**
+	 * Un tutorat se caractérise par un cours, un groupe d'élève(s) et une date / heure
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tutoring other = (Tutoring) obj;
+		if (this.course == null) {
+			if (other.course != null)
+				return false;
+		} else if (!this.course.equals(other.course))
+			return false;
+		if (this.dateTime == null) {
+			if (other.dateTime != null)
+				return false;
+		} else if (!this.dateTime.equals(other.dateTime))
+			return false;
+		if (this.students == null) {
+			if (other.students != null)
+				return false;
+		} else if (!this.students.equals(other.students))
+			return false;
+		return true;
 	}
 	
 }

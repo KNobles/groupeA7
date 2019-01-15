@@ -33,9 +33,7 @@ public class Interview {
 		
 	}
 	
-	public Interview(Long idInterview, Student student, User  user, String date, String resolutions,
-			String monitoring) {
-		this.idInterview = idInterview;
+	public Interview(Student student, User user, String date, String resolutions, String monitoring) {
 		this.student = student;
 		this.user = user;
 		this.date = date;
@@ -44,7 +42,7 @@ public class Interview {
 	}
 
 	public Long getIdInterview() {
-		return idInterview;
+		return this.idInterview;
 	}
 
 	public void setIdInterview(Long idInterview) {
@@ -52,7 +50,7 @@ public class Interview {
 	}
 
 	public Student getStudent() {
-		return student;
+		return this.student;
 	}
 
 	public void setStudent(Student student) {
@@ -60,7 +58,7 @@ public class Interview {
 	}
 
 	public User getUser() {
-		return user;
+		return this.user;
 	}
 
 	public void setUser(User user) {
@@ -68,7 +66,7 @@ public class Interview {
 	}
 
 	public String getDate() {
-		return date;
+		return this.date;
 	}
 
 	public void setDate(String date) {
@@ -76,7 +74,7 @@ public class Interview {
 	}
 
 	public String getResolutions() {
-		return resolutions;
+		return this.resolutions;
 	}
 
 	public void setResolutions(String resolutions) {
@@ -84,19 +82,68 @@ public class Interview {
 	}
 
 	public String getMonitoring() {
-		return monitoring;
+		return this.monitoring;
 	}
 
 	public void setMonitoring(String monitoring) {
 		this.monitoring = monitoring;
 	}
 
+	/**
+	 * Exemple: 
+	 * 
+	 * Rencontre individuelle entre Mme Duroisin et l'étudiant(e) Nobles Kevin du 20/01/2019
+	 * Résolution(s) de l'étudiant(e) : Travailler plus régulièrement.
+	 * Suivi : proposé et refusé.
+	 */
 	@Override
 	public String toString() {
-		return "Interview [idInterview=" + idInterview + ", idStudent=" + student.getFirstname() + " " +
-	student.getName() + " " + student.getGroup() + ", relay: " + user.getName() + ", date="
-				+ date + ", resolutions=" + resolutions + ", monitoring=" + monitoring + "]";
+		return "Rencontre individuelle entre " + this.user + " et l'étudiant(e) " + this.student.getFullName()
+			+ " du " + this.date + "\n"
+			+ "Résolution(s) de l'étudiant(e) : " + this.resolutions + "\n"
+			+ "Suivi : " + this.monitoring + "\n";
+		
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((this.date == null) ? 0 : this.date.hashCode());
+		result = prime * result + ((this.student == null) ? 0 : this.student.hashCode());
+		result = prime * result + ((this.user == null) ? 0 : this.user.hashCode());
+		return result;
+	}
+
+	/**
+	 * Une rencontre individuelle se définit par un étudiant, et un responsable (relais ou directeur) ainsi qu'une date.
+	 * Un étudiant peut rencontrer la directrice le 9/05/2019 et un autre rencontrer un relais le même jour.
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Interview other = (Interview) obj;
+		if (this.date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!this.date.equals(other.date))
+			return false;
+		if (this.student == null) {
+			if (other.student != null)
+				return false;
+		} else if (!this.student.equals(other.student))
+			return false;
+		if (this.user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!this.user.equals(other.user))
+			return false;
+		return true;
+	}
 	
 }

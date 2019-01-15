@@ -24,7 +24,7 @@ public class Seminary {
 	@ManyToMany(cascade = CascadeType.PERSIST) 
 	private List<Section> sections; 
 	
-	private String date; //quand aura lieu le séminaire /!\ regex lors de l'encodage /!\ ainsi on saura récupérer le quadri
+	private String dateTime; //quand aura lieu le séminaire (jour + heure) /!\ regex lors de l'encodage /!\ ainsi on saura récupérer le quadri
 	private String theme; 
 
 	public Seminary() {
@@ -33,7 +33,7 @@ public class Seminary {
 	
 	public Seminary(String theme, String date, List<Section> sections) {
 		this.theme = theme;
-		this.date = date;
+		this.dateTime = date;
 		this.sections = sections;
 	}
 
@@ -53,12 +53,12 @@ public class Seminary {
 		this.sections = sections;
 	}
 
-	public String getDate() {
-		return this.date;
+	public String getDateTime() {
+		return this.dateTime;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDateTime(String date) {
+		this.dateTime = date;
 	}
 
 	public String getTheme() {
@@ -72,12 +72,49 @@ public class Seminary {
 	/**
 	 * Exemple : 
 	 * 
-	 * Le séminaire sur le thème : "La cyber-sécurité" aura lieu le 09/11/2019.
+	 * Le séminaire sur le thème : "La cyber-sécurité" aura lieu le 09/11/2019 à 15h00.
 	 * Section(s) concernée(s) : Informatique de gestion, Assistant(e) de direction, Comptabilité.
 	 */
 	@Override
 	public String toString() {
-		return "Le séminaire \"" + this.theme + "\" aura lieu le " + this.date + ".\n"
+		return "Le séminaire \"" + this.theme + "\" aura lieu " + this.dateTime + ".\n"
 				+ "Section(s) concernée(s) : " + this.sections + "\n"; 
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((this.dateTime == null) ? 0 : this.dateTime.hashCode());
+		result = prime * result + ((this.sections == null) ? 0 : this.sections.hashCode());
+		return result;
+	}
+
+	/**
+	 * Un séminaire se caractérise par une date et des sections concernées.
+	 * Si la section informatique a déjà un séminaire le 15/03/2019 à assister, 
+	 * on ne pourra pas ajouter un autre séminaire sur un autre sujet au même moment.
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Seminary other = (Seminary) obj;
+		if (this.dateTime == null) {
+			if (other.dateTime != null)
+				return false;
+		} else if (!this.dateTime.equals(other.dateTime))
+			return false;
+		if (this.sections == null) {
+			if (other.sections != null)
+				return false;
+		} else if (!this.sections.equals(other.sections))
+			return false;
+		return true;
+	}
+	
 }
