@@ -4,22 +4,18 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 /**
  * 
  * @author Laeti
- *
  */
 @Entity
 public class Course {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idCourse;
+	private String code;
 	private String name;
 	@ManyToMany(cascade = CascadeType.PERSIST)
 	private List<Section> sections;
@@ -28,17 +24,10 @@ public class Course {
 		
 	}
 
-	public Course(String name, List<Section> sections) {
+	public Course(String code, String name, List<Section> sections) {
+		this.code = code;
 		this.name = name;
 		this.sections = sections;
-	}
-
-	public Long getIdCourse() {
-		return this.idCourse;
-	}
-
-	public void setIdCourse(Long idCourse) {
-		this.idCourse = idCourse;
 	}
 
 	public String getName() {
@@ -48,23 +37,56 @@ public class Course {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getCode() {
+		return this.code;
+	}
 
-	public List<Section> getSection() {
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public List<Section> getSections() {
 		return this.sections;
 	}
 
-	public void setSection(List<Section> sections) {
+	public void setSections(List<Section> sections) {
 		this.sections = sections;
 	}
-	
+
 	/**
 	 * Exemple : 
 	 * 
-	 * Le cours de Français est donné aux sections : Informatique de gestion, Comptabilité.
+	 * Le cours d'Anglais (ECIG3B02IG302A) est donné aux sections : Informatique de gestion, Comptabilité.
 	 */
 	@Override
 	public String toString() {
-		return "Le cours de " + this.name + " est donné aux sections : " + this.sections ;
+		return "Le cours de " + this.name + " ( " + this.code + ") est donné aux sections : " + this.sections ;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((this.code == null) ? 0 : this.code.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Course other = (Course) obj;
+		if (this.code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!this.code.equals(other.code))
+			return false;
+		return true;
 	}
 	
 }
