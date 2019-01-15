@@ -12,7 +12,7 @@ import be.helha.aemt.entities.Coordinator;
 @Stateless
 public class DAOCoordinator {
 	
-	@PersistenceContext(unitName="rocroixJTA")
+	@PersistenceContext(unitName="groupeA7JTA")
 	private EntityManager em;
 	
 	public List<Coordinator> selectAll(){

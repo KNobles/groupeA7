@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import be.helha.aemt.entities.Remediation;
 
 public class DAORemediation {
-	@PersistenceContext(unitName="noblesJTA")
+	@PersistenceContext(unitName="groupeA7JTA")
 	private EntityManager em;	
 	public List<Remediation> selectAll (){
 		return em.createQuery("SELECT r FROM Remediation r").getResultList();

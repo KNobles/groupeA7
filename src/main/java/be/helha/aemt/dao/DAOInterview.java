@@ -12,7 +12,7 @@ import be.helha.aemt.entities.Interview;
 @Stateless
 public class DAOInterview {
 	
-	@PersistenceContext(unitName="noblesJTA")
+	@PersistenceContext(unitName="groupeA7JTA")
 	private EntityManager em;	
 	public List<Interview> selectAll (){
 		return em.createQuery("SELECT i FROM Interview i").getResultList();
