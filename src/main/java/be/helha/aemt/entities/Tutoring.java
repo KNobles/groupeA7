@@ -23,7 +23,7 @@ public class Tutoring {
 	private Long idTutoring;
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
-	private List<Student> students; //tutorat individuel ou multiple? liste?
+	private List<Student> students; //tutorat individuel et parfois en groupe
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Course course;
@@ -70,7 +70,7 @@ public class Tutoring {
 	@Override
 	public String toString() {
 		return "Tutorat pour le cours de : " + this.course.getName() + "\n"
-				+ "Concerne l'étudiant : " + this.students; //le toString de Student doit donc renvoyer : nom, prénom (orientation (section) - classe)
+				+ "Concerne l'étudiant : " + this.students; 
 	}
 	
 }
