@@ -1,1 +1,3 @@
 Créér/Copier un fichier classpath pour la fin.
+
+RONFLEX : refaire design navbar.xhtml avec primefaces

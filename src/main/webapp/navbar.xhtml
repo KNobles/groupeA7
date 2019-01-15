@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"  
-    xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui"> 
-    
-	<head>
-	
-	
-	</head>
-	<body>
+<!-- DESIGN A REFAIRE -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 		<h:form>
 			<p:growl id="Menu"/>
 			
@@ -24,8 +20,10 @@
 				<p:menuitem value="Remédiations"/>
 				<p:menuitem value="A propos"/>
 				
-				<commandButton type="button" value="Logout"/>
+				<f:facet name = "options">
+					
+				</f:facet>
 			</p:menubar>
 		</h:form>	
-	</body>
-</html>
+	
+</ui:composition>
