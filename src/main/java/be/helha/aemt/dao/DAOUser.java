@@ -27,7 +27,7 @@ public class DAOUser {
 	
 	public User selectId(long id) {
 		Query query;
-		String sSelect="SELECT d FROM director d WHERE d.idDirector=?1";
+		String sSelect="SELECT u FROM user u WHERE u.idUser=?1";
 		query=em.createQuery(sSelect);
 		query.setParameter(1, id);
 		User u = (User)query.getSingleResult();
@@ -42,7 +42,7 @@ public class DAOUser {
 	
 	//Delete
 	public void delete(User u) {
-		Query query = this.em.createQuery("DELETE d FROM director d WHERE idDirector =?1");
+		Query query = this.em.createQuery("DELETE u FROM user u WHERE idUser =?1");
 		query.setParameter(1, u.getIdDirector());
 		query.executeUpdate();
 	}
