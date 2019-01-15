@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entities.Coordinator;
-import be.helha.aemt.entities.Relay;
 
 @Stateless
 public class DAOCoordinator {

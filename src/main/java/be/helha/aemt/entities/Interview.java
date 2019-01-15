@@ -23,7 +23,7 @@ public class Interview {
 	private Student student;
 	
 	@ManyToOne
-	private Relay relay;
+	private User user;
 	private String date;
 	private String resolutions;
 	private String monitoring;
@@ -32,11 +32,11 @@ public class Interview {
 		
 	}
 	
-	public Interview(Long idInterview, Student student, Relay  relay, String date, String resolutions,
+	public Interview(Long idInterview, Student student, User  user, String date, String resolutions,
 			String monitoring) {
 		this.idInterview = idInterview;
 		this.student = student;
-		this.relay = relay;
+		this.user = user;
 		this.date = date;
 		this.resolutions = resolutions;
 		this.monitoring = monitoring;
@@ -58,12 +58,12 @@ public class Interview {
 		this.student = student;
 	}
 
-	public Relay getRelay() {
-		return relay;
+	public User getUser() {
+		return user;
 	}
 
-	public void setRelay(Relay relay) {
-		this.relay = relay;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getDate() {
@@ -93,7 +93,7 @@ public class Interview {
 	@Override
 	public String toString() {
 		return "Interview [idInterview=" + idInterview + ", idStudent=" + student.getFirstname() + " " +
-	student.getName() + " " + student.getGroup() + ", relay: " + relay.getName() + ", date="
+	student.getName() + " " + student.getGroup() + ", relay: " + user.getName() + ", date="
 				+ date + ", resolutions=" + resolutions + ", monitoring=" + monitoring + "]";
 	}
 	

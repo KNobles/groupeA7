@@ -12,11 +12,11 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Director {
+public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idDirector;
+	private Long idUser;
 	
 	private String name;
 	private String firstname;
@@ -24,11 +24,11 @@ public class Director {
 	private String mail;
 	private char gender;
 	
-	public Director() {
+	public User() {
 		
 	}
 	
-	public Director(String name, String firstname, String password, String mail, char gender) {
+	public User(String name, String firstname, String password, String mail, char gender) {
 		this.name = name;
 		this.firstname = firstname;
 		this.password = password;
@@ -37,11 +37,11 @@ public class Director {
 	}
 
 	public Long getIdRelay() {
-		return idDirector;
+		return idUser;
 	}
 
 	public void setIdRelay(Long idRelay) {
-		this.idDirector = idRelay;
+		this.idUser = idRelay;
 	}
 
 	public String getName() {
@@ -65,11 +65,11 @@ public class Director {
 	}
 
 	public Long getIdDirector() {
-		return idDirector;
+		return idUser;
 	}
 
 	public void setIdDirector(Long idDirector) {
-		this.idDirector = idDirector;
+		this.idUser = idDirector;
 	}
 
 	public String getPassword() {

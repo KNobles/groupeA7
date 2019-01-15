@@ -29,7 +29,7 @@ public class Student {
 	private String dateRel;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
-	private Relay relay;
+	private User user;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Section section;
@@ -130,12 +130,12 @@ public class Student {
 		this.dateRel = dateRel;
 	}
 
-	public Relay getRelay() {
-		return relay;
+	public User getUser() {
+		return user;
 	}
 
-	public void setRelay(Relay relay) {
-		this.relay = relay;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Section getSection() {

@@ -14,7 +14,7 @@ import javax.persistence.ManyToOne;
 public class Section {
 	
 	@ManyToOne(cascade = CascadeType.PERSIST) 
-	private Director director;
+	private User director;
 	private String code;
 	@Id
 	private String name;
@@ -23,17 +23,17 @@ public class Section {
 		
 	}
 	
-	public Section(String name, String code, Director director) {
+	public Section(String name, String code, User director) {
 		this.name = name;
 		this.code = code;
 		this.director = director;
 	}
 
-	public Director getDirector() {
+	public User getDirector() {
 		return this.director;
 	}
 
-	public void setDirector(Director director) {
+	public void setDirector(User director) {
 		this.director = director;
 	}
 
