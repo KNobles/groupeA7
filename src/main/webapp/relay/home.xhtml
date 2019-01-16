@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:jsf="http://xmlns.jcp.org/jsf"
-	xmlns:h="http://xmlns.jcp.org/jsf/html">
-<h:head>
-<title>Home Relay Page</title>
-<meta http-equiv="
-	Content-Type" content="text/html; charset=UTF-8" />
-</h:head>
-<h:body>
-		<ui:include src="navbar.xhtml" />
-</h:body>
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Home Relay Page</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	 	<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/images/favicon.ico"/>
+	</h:head>
+	
+	<h:body>
+		<ui:include src="/navbar.xhtml"/>
+		<h1>Bienvenue sur l'espace relais de l'aide à la réussite!</h1>
+		
+		<h:form>
+			<h:commandButton action="/index.xhtml" value="Retour à la page d'accueil" />
+		</h:form>
+	</h:body>
 </html>
