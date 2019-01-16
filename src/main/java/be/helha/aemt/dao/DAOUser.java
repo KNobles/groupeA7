@@ -16,7 +16,7 @@ public class DAOUser {
 	private EntityManager em;
 	
 	public List<Users> selectAll(){
-		return this.em.createQuery("SELECT u FROM User u", Users.class).getResultList();
+		return this.em.createQuery("SELECT u FROM Users u", Users.class).getResultList();
 	}
 	
 	public Users add(Users u) {
@@ -26,7 +26,7 @@ public class DAOUser {
 	
 	public Users selectId(String mail) {
 		Query query;
-		String sSelect="SELECT u FROM User u WHERE u.mail=?1";
+		String sSelect="SELECT u FROM Users u WHERE u.mail=?1";
 		query=this.em.createQuery(sSelect);
 		query.setParameter(1, mail);
 		return (Users)query.getSingleResult();
@@ -39,7 +39,7 @@ public class DAOUser {
 	
 	//Delete
 	public void delete(Users u) {
-		Query query = this.em.createQuery("DELETE u FROM User u WHERE mail =?1");
+		Query query = this.em.createQuery("DELETE u FROM Users u WHERE mail =?1");
 		query.setParameter(1, u.getMail());
 
 		query.executeUpdate();
