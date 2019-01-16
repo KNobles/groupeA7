@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,28 +24,26 @@ public class Student {
 	private Long idStudent;
 	private String firstname;
 	private String name;
-	private String group;
+	private String group;	//classe
 	private boolean coordBroadcast;
 	private boolean photoBroadcast;
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Report> reports;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	private User user;
-	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Section section;
 	
 	public Student() {}
 	
-	public Student(String name, String group, boolean coord, boolean photo, Section section) {
-		super();
+	public Student(String firstname, String name, String group, boolean coord, boolean photo, Section section, List<Report> reports) {
+		this.firstname = firstname;
 		this.name = name;
 		this.group=group;
 		this.coordBroadcast = coord;
 		this.photoBroadcast = photo;
 		this.section = section;
+		this.reports =reports;
 	}
 
 	public Long getIdStudent() {
@@ -93,14 +92,6 @@ public class Student {
 
 	public void setPhotoBroadcast(boolean photoBroadcast) {
 		this.photoBroadcast = photoBroadcast;
-	}
-
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public Section getSection() {
