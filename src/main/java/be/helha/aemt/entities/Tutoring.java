@@ -7,8 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 /**
  * 
@@ -22,7 +23,8 @@ public class Tutoring {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idTutoring;
 	
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@ManyToMany(cascade = CascadeType.PERSIST) 
+	@JoinTable //table d'association
 	private List<Student> students; //tutorat individuel et parfois en groupe
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
@@ -62,6 +64,18 @@ public class Tutoring {
 
 	public void setStudents(List<Student> students) {
 		this.students = students;
+	}
+	
+	public boolean addStudent(Student s) {
+		if(this.students.contains(s)) { //on vérifie si l'étudiant est déjà associé au tutorat
+			return false; //L'étudiant est déjà lié au tutorat
+		}
+		this.students.add(s); //nouvel étudiant associé au tutorat
+		return true;
+	}
+	
+	public boolean removeStudent(Student s) {
+		return this.students.remove(s);
 	}
 
 	public String getDateTime() {

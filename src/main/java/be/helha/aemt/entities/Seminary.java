@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 /**
@@ -23,6 +25,10 @@ public class Seminary {
 	
 	@ManyToMany(cascade = CascadeType.PERSIST) 
 	private List<Section> sections; 
+	
+	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER) 
+	@JoinTable
+	private List<Student> students;
 	
 	private String dateTime; //quand aura lieu le séminaire (jour + heure) /!\ regex lors de l'encodage /!\ ainsi on saura récupérer le quadri
 	private String theme; 
