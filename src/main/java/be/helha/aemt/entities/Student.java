@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,28 +24,26 @@ public class Student {
 	private Long idStudent;
 	private String firstname;
 	private String name;
-	private String group;
+	private String group;	//classe
 	private boolean coordBroadcast;
 	private boolean photoBroadcast;
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
 	private List<Report> reports;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
-	private User user;
-	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private Section section;
 	
 	public Student() {}
 	
-	public Student(String name, String group, boolean coord, boolean photo, Section section) {
-		super();
+	public Student(String firstname, String name, String group, boolean coord, boolean photo, Section section, List<Report> reports) {
+		this.firstname = firstname;
 		this.name = name;
 		this.group=group;
 		this.coordBroadcast = coord;
 		this.photoBroadcast = photo;
 		this.section = section;
+		this.reports =reports;
 	}
 
 	public Long getIdStudent() {
@@ -95,14 +94,6 @@ public class Student {
 		this.photoBroadcast = photoBroadcast;
 	}
 
-	public User getUser() {
-		return this.user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public Section getSection() {
 		return this.section;
 	}
@@ -111,9 +102,14 @@ public class Student {
 		this.section = section;
 	}
 	
-	//renvoie le nom, prénom (orientation - classe)
+	/**
+	 * renvoie le nom, prénom (orientation - classe)
+	 * Exemple : 
+	 * 
+	 * Nillès, Laetitia (IG - 3B1)
+	 */ 
 	public String toString() {
-		return getFullName() + " (" + this.section.getName() + " - " +this.group + ")";
+		return getFullName() + " (" + this.section.getName() + " - " +this.group + ")\n";
 	}
 	
 	//renvoie le nom et le prénom de l'étudiant
