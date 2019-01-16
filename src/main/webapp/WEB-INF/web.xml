@@ -9,14 +9,72 @@
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
+	
+	<session-config>
+        <session-timeout>
+            30 <!-- temps exprimé en minutes -->
+        </session-timeout>
+    </session-config>
+    
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 	
+	<security-constraint>
+        <display-name>Admin Pages</display-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Admin Area</web-resource-name>
+            <description></description>
+            <url-pattern>/faces/admin/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>admin</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>All Access</display-name>
+        <web-resource-collection>
+            <web-resource-name>None Protected User Area</web-resource-name>
+            <description/>
+            <url-pattern>/faces/users/*</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>PUT</http-method>
+            <http-method>OPTIONS</http-method>
+            <http-method>TRACE</http-method>
+            <http-method>DELETE</http-method>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+	
+	<login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>groupeA7Realm</realm-name> <!-- nom utilisé dans la configuration de payara dans le navigateur -->
+        <form-login-config>
+            <form-login-page>/login.xhtml</form-login-page>
+            <form-error-page>/loginerror.xhtml</form-error-page> <!-- la page s'affiche en cas d'erreur du formulaire de login.xhtml -->
+        </form-login-config>
+    </login-config>
+    
 </web-app>
