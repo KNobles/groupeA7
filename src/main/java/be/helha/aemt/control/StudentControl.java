@@ -15,9 +15,7 @@ import javax.servlet.http.Part;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 import be.helha.aemt.ejb.ManagementStudentEJB;
-import be.helha.aemt.ejb.ManagementUserEJB;
 import be.helha.aemt.entities.Student;
-import be.helha.aemt.entities.Users;
 import be.helha.aemt.util.StudentReader;
 
 @RequestScoped
@@ -93,10 +91,6 @@ public class StudentControl {
 	 public String doAdd() {
 		 bean.add(student);
 		 return "liste.xhtml";
-	 }
-	 
-	 
-	
-	
+	 }	
 
 }

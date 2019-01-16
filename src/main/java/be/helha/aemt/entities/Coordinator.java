@@ -16,7 +16,7 @@ public class Coordinator {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long idCoordinator;
+	private Integer idCoordinator;
 	
 	private String name;
 	private String firstname;
@@ -34,11 +34,11 @@ public class Coordinator {
 		this.mail = mail;
 	}
 
-	public Long getIdRelay() {
+	public Integer getIdRelay() {
 		return idCoordinator;
 	}
 
-	public void setIdRelay(Long idRelay) {
+	public void setIdRelay(Integer idRelay) {
 		this.idCoordinator = idRelay;
 	}
 

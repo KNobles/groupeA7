@@ -24,7 +24,7 @@ public class DAOCoordinator {
 		return c;
 	}
 	
-	public Coordinator selectId(Long id) {
+	public Coordinator selectId(Integer id) {
 		Query query;
 		String sSelect="SELECT c FROM coordinator c WHERE c.idCoordinator=?1";
 		query=em.createQuery(sSelect);

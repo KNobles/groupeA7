@@ -21,11 +21,12 @@
 		</properties>
 	</persistence-unit>
 	<persistence-unit name="groupeA7" transaction-type="RESOURCE_LOCAL"> <!-- même nom que dans le Main pour tester localement -->
-	<!-- EN APPLICATION 2 TIERS
+
 	<jta-data-source>jdbc/groupeA7</jta-data-source>
 	
-		<class>be.helha.aemt.entities.Coordinator</class>
+				<class>be.helha.aemt.entities.Coordinator</class>
 		<class>be.helha.aemt.entities.Course</class>
+		<class>be.helha.aemt.entities.GroupUser</class>
 		<class>be.helha.aemt.entities.Interview</class>
 		<class>be.helha.aemt.entities.Remediation</class>
 		<class>be.helha.aemt.entities.Report</class>
@@ -33,10 +34,10 @@
 		<class>be.helha.aemt.entities.Seminary</class>
 		<class>be.helha.aemt.entities.Student</class>
 		<class>be.helha.aemt.entities.Tutoring</class>
-		<class>be.helha.aemt.entities.User</class>
+		<class>be.helha.aemt.entities.Users</class>
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
-	 -->
+	 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/dba7"/>

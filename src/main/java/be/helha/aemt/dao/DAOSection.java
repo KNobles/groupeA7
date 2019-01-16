@@ -44,7 +44,7 @@ public class DAOSection {
 		
 		//Delete
 		public void deleteSection(Section s) {
-			Query query = this.em.createQuery("DELETE s FROM Section s WHERE code =?1");
+			Query query = this.em.createQuery("DELETE s FROM Section s WHERE s.id =?1");
 			query.setParameter(1, s.getCode());
 			query.executeUpdate();
 		}
