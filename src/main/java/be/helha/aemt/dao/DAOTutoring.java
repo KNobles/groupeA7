@@ -15,7 +15,7 @@ public class DAOTutoring {
 	private EntityManager em;
 	
 	public List<Tutoring> selectAll(){
-		return em.createQuery("SELECT t FROM Tutoring s").getResultList();
+		return em.createQuery("SELECT t FROM Tutoring t").getResultList();
 	}
 	
 	public Tutoring add(Tutoring t) {
@@ -23,7 +23,7 @@ public class DAOTutoring {
 		return t;
 	}
 	
-	public Tutoring selectId(long id) {
+	public Tutoring selectId(Long id) {
 		Query query;
 		String sSelect="SELECT t FROM Tutoring t WHERE s.idTutoring=?1";
 		query=em.createQuery(sSelect);
@@ -34,14 +34,14 @@ public class DAOTutoring {
 	}
 	
 	//Update
-		public Tutoring updateTutoring(Tutoring s) {
-			return em.merge(s);
+		public Tutoring updateTutoring(Tutoring t) {
+			return em.merge(t);
 		}
 		
 		//Delete
-		public void deleteTutoring(Tutoring s) {
+		public void deleteTutoring(Tutoring t) {
 			Query query = this.em.createQuery("DELETE t FROM Tutoring t WHERE idTutoring =?1");
-			query.setParameter(1, s.getIdTutoring());
+			query.setParameter(1, t.getIdTutoring());
 			query.executeUpdate();
 		}
 }

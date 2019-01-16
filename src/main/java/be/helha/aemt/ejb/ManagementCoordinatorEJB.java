@@ -29,7 +29,7 @@ public class ManagementCoordinatorEJB implements IManagementCoordinatorEJB {
 	}
 
 	@Override
-	public Coordinator selectId(long id) {
+	public Coordinator selectId(Long id) {
 		// TODO Auto-generated method stub
 		return dao.selectId(id);
 	}

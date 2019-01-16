@@ -17,6 +17,8 @@ public interface IManagementInterviewEJB {
 
 	public List<Interview> selectAll();
 	
+	public Interview selectId(Long id);
+	
 	public Interview add(Interview i);
 	
 	public Interview updateInterview(Interview i);

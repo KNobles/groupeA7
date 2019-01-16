@@ -23,7 +23,7 @@ public class DAOInterview {
 		return i;
 	}
 	
-	public Interview selectId(long id) {
+	public Interview selectId(Long id) {
 		Query query;
 		String sSelectId="SELECT i FROM Interview i WHERE i.idInterview=?1";
 		query=em.createQuery(sSelectId);

@@ -13,7 +13,7 @@ public interface IManagementCoordinatorEJB {
 	
 	public Coordinator add(Coordinator c);
 	
-	public Coordinator selectId(long id);
+	public Coordinator selectId(Long id);
 	
 	public Coordinator update(Coordinator c);
 	

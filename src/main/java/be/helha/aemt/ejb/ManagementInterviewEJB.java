@@ -23,6 +23,11 @@ public class ManagementInterviewEJB implements IManagementInterviewEJB {
 	public List<Interview> selectAll() {
 		return daoInterview.selectAll();
 	}
+	
+	@Override
+	public Interview selectId(Long id) {
+		return daoInterview.selectId(id);
+	}
 
 	@Override
 	public Interview add(Interview i) {

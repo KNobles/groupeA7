@@ -23,7 +23,7 @@ public class DAOSeminary {
 		return s;
 	}
 	
-	public Seminary selectId(long id) {
+	public Seminary selectId(Long id) {
 		Query query;
 		String sSelect="SELECT s FROM Seminary s WHERE s.idSeminary=?1";
 		query=em.createQuery(sSelect);

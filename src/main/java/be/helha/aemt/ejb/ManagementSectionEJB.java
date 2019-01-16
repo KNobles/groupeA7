@@ -1,5 +1,38 @@
 package be.helha.aemt.ejb;
 
-public class ManagementSectionEJB {
+import java.util.List;
+
+import be.helha.aemt.dao.DAOSection;
+import be.helha.aemt.entities.Section;
+
+public class ManagementSectionEJB implements IManagementSectionEJB {
+
+	DAOSection daoSection;
+	
+	@Override
+	public List<Section> selectAll() {
+		return daoSection.selectAll();
+	}
+
+	@Override
+	public Section add(Section s) {
+		return daoSection.add(s);
+	}
+
+	@Override
+	public Section selectId(String code) {
+		return daoSection.selectId(code);
+	}
+
+	@Override
+	public Section update(Section s) {
+		return daoSection.updateSection(s);
+	}
+
+	@Override
+	public void delete(Section s) {
+		daoSection.deleteSection(s);
+		
+	}
 
 }

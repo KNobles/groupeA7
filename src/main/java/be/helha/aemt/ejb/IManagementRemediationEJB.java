@@ -17,6 +17,8 @@ public interface IManagementRemediationEJB {
 	
 	public List<Remediation> selectAll();
 	
+	public Remediation selectId(Long id);
+	
 	public Remediation add(Remediation r);
 	
 	public Remediation updateAdmin(Remediation r);

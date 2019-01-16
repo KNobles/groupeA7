@@ -24,6 +24,11 @@ public class ManagementRemediationEJB implements IManagementRemediationEJB{
 	public List<Remediation> selectAll() {
 		return daoRemediation.selectAll();
 	}
+	
+	@Override
+	public Remediation selectId(Long id) {
+		return daoRemediation.selectId(id);
+	}
 
 	@Override
 	public Remediation add(Remediation r) {

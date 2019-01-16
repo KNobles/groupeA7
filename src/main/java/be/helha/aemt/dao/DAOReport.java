@@ -22,7 +22,7 @@ public class DAOReport {
 		return r;
 	}
 	
-	public Report selectId(long id) {
+	public Report selectId(Long id) {
 		Query query;
 		String sSelectId="SELECT r FROM Report r WHERE r.idReport=?1";
 		query=em.createQuery(sSelectId);
