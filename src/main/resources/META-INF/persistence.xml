@@ -12,7 +12,7 @@
 		<class>be.helha.aemt.entities.Seminary</class>
 		<class>be.helha.aemt.entities.Student</class>
 		<class>be.helha.aemt.entities.Tutoring</class>
-		<class>be.helha.aemt.entities.User</class>
+		<class>be.helha.aemt.entities.Users</class>
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 			<properties>

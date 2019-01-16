@@ -19,13 +19,13 @@ public class Report {
 	private Long idReport;
 	private String note;
 	private String date;
-	private User author; //auteur de la note : directeur ou relais
+	private Users author; //auteur de la note : directeur ou relais
 	
 	public Report() {
 		
 	}
 	
-	public Report(String note, String date, User author) {
+	public Report(String note, String date, Users author) {
 		this.note = note; //contenu du compte-rendu
 		this.date = date; //récupérer la date automatiquement lors de l'encodage -> pas d'insertion manuelle
 		this.author = author; //récupérer le type d'utilisateur connecté : directeur ou relais?
@@ -55,11 +55,11 @@ public class Report {
 		this.date = date;
 	}
 
-	public User getAuthor() {
+	public Users getAuthor() {
 		return this.author;
 	}
 
-	public void setAuthor(User author) {
+	public void setAuthor(Users author) {
 		this.author = author;
 	}
 	

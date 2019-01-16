@@ -20,13 +20,13 @@ public class GroupUser implements Serializable {
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	private List<User> users;
+	private List<Users> users;
 
 	public GroupUser() {
 		
 	}
 	
-	public GroupUser(String name, List<User> users) {
+	public GroupUser(String name, List<Users> users) {
 		this.name = name;
 		this.users = users;
 	}
@@ -47,11 +47,11 @@ public class GroupUser implements Serializable {
 		this.name = name;
 	}
 
-	public List<User> getUsers() {
+	public List<Users> getUsers() {
 		return this.users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(List<Users> users) {
 		this.users = users;
 	}
 	

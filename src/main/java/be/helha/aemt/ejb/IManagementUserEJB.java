@@ -4,18 +4,18 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import be.helha.aemt.entities.User;
+import be.helha.aemt.entities.Users;
 
 @Remote
 public interface IManagementUserEJB {
 
-	public List<User> selectAll();
+	public List<Users> selectAll();
 	
-	public User add(User d);
+	public Users add(Users d);
 	
-	public User selectId(String id);
+	public Users selectId(String id);
 	
-	public User update(User d);
+	public Users update(Users d);
 	
-	public void delete(User d);
+	public void delete(Users d);
 }

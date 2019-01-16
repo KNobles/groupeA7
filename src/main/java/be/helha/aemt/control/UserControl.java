@@ -8,7 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 import be.helha.aemt.ejb.ManagementUserEJB;
-import be.helha.aemt.entities.User;
+import be.helha.aemt.entities.Users;
 
 @RequestScoped
 @Named
@@ -21,9 +21,9 @@ public class UserControl implements Serializable {
 	
 	@EJB
 	private ManagementUserEJB bean;
-	private User user = new User();
+	private Users user = new Users();
 	
-	public List<User> doSelectAll(){
+	public List<Users> doSelectAll(){
 		return bean.selectAll();
 	}
 	
@@ -39,11 +39,11 @@ public class UserControl implements Serializable {
 		return "liste.xhtml";
 	}
 
-	public User getUser() {
+	public Users getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Users user) {
 		this.user = user;
 	}
 	

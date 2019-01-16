@@ -25,7 +25,7 @@ public class Interview {
 	private Student student;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	private User user;
+	private Users user;
 	private String date;
 	private String resolutions;
 	private String monitoring;
@@ -34,7 +34,7 @@ public class Interview {
 		
 	}
 	
-	public Interview(Student student, User user, String date, String resolutions, String monitoring) {
+	public Interview(Student student, Users user, String date, String resolutions, String monitoring) {
 		this.student = student;
 		this.user = user;
 		this.date = date;
@@ -58,11 +58,11 @@ public class Interview {
 		this.student = student;
 	}
 
-	public User getUser() {
+	public Users getUser() {
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Users user) {
 		this.user = user;
 	}
 

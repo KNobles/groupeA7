@@ -19,7 +19,7 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
-public class User implements Serializable {
+public class Users implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -37,11 +37,11 @@ public class User implements Serializable {
 	private String mail;
 	private char gender;
 	
-	public User() {
+	public Users() {
 		
 	}
 	
-	public User(GroupUser group, String name, String firstname, String password, char gender, List<Section> sections) {
+	public Users(GroupUser group, String name, String firstname, String password, char gender, List<Section> sections) {
 		this.group = group; //admin ou relais
 		this.name = name;
 		this.firstname = firstname;
@@ -153,7 +153,7 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Users other = (Users) obj;
 		if (this.mail == null) {
 			if (other.mail != null)
 				return false;

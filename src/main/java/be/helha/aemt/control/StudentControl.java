@@ -9,7 +9,7 @@ import javax.inject.Named;
 import be.helha.aemt.ejb.ManagementStudentEJB;
 import be.helha.aemt.ejb.ManagementUserEJB;
 import be.helha.aemt.entities.Student;
-import be.helha.aemt.entities.User;
+import be.helha.aemt.entities.Users;
 
 @RequestScoped
 @Named
