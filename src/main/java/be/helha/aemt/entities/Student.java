@@ -24,7 +24,7 @@ public class Student {
 	private Long idStudent;
 	private String firstname;
 	private String name;
-	private String group;	//classe
+	private String classCode;	//classe
 	private boolean coordBroadcast;
 	private boolean photoBroadcast;
 	
@@ -39,7 +39,7 @@ public class Student {
 	public Student(String firstname, String name, String group, boolean coord, boolean photo, Section section, List<Report> reports) {
 		this.firstname = firstname;
 		this.name = name;
-		this.group=group;
+		this.classCode=group;
 		this.coordBroadcast = coord;
 		this.photoBroadcast = photo;
 		this.section = section;
@@ -70,12 +70,12 @@ public class Student {
 		this.name = name;
 	}
 
-	public String getGroup() {
-		return this.group;
+	public String getClassCode() {
+		return this.classCode;
 	}
 
-	public void setGroup(String group) {
-		this.group = group;
+	public void setClassCode(String group) {
+		this.classCode = group;
 	}
 
 	public boolean isCoordBroadcast() {
@@ -109,7 +109,7 @@ public class Student {
 	 * Nillès, Laetitia (IG - 3B1)
 	 */ 
 	public String toString() {
-		return getFullName() + " (" + this.section.getName() + " - " +this.group + ")\n";
+		return getFullName() + " (" + this.section.getName() + " - " +this.classCode + ")\n";
 	}
 	
 	//renvoie le nom et le prénom de l'étudiant
