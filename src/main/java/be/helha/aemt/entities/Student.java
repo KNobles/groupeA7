@@ -102,9 +102,14 @@ public class Student {
 		this.section = section;
 	}
 	
-	//renvoie le nom, prénom (orientation - classe)
+	/**
+	 * renvoie le nom, prénom (orientation - classe)
+	 * Exemple : 
+	 * 
+	 * Nillès, Laetitia (IG - 3B1)
+	 */ 
 	public String toString() {
-		return getFullName() + " (" + this.section.getName() + " - " +this.group + ")";
+		return getFullName() + " (" + this.section.getName() + " - " +this.group + ")\n";
 	}
 	
 	//renvoie le nom et le prénom de l'étudiant
