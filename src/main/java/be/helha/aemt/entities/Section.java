@@ -12,8 +12,8 @@ import javax.persistence.Id;
 public class Section {
 	
 	@Id
-	private String code;
-	private String name;
+	private String code; //abrégé de la section, ex : IG
+	private String name; //nom de la section, ex : Informatique de Gestion
 
 	public Section() {
 		
