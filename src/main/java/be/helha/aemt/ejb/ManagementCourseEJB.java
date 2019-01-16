@@ -2,9 +2,14 @@ package be.helha.aemt.ejb;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
 import be.helha.aemt.dao.DAOCourse;
 import be.helha.aemt.entities.Course;
 
+@LocalBean
+@Stateless
 public class ManagementCourseEJB implements IManagementCourseEJB {
 
 	DAOCourse daoCourse;
