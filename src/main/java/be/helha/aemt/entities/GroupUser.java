@@ -12,7 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Group implements Serializable {
+public class GroupUser implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,12 +22,13 @@ public class Group implements Serializable {
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<User> users;
 
-	public Group() {
+	public GroupUser() {
 		
 	}
 	
-	public Group(String name) {
+	public GroupUser(String name, List<User> users) {
 		this.name = name;
+		this.users = users;
 	}
 
 	public Long getId() {

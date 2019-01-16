@@ -26,7 +26,7 @@ public class User implements Serializable {
 	private Long idUser;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	private Group group;
+	private GroupUser group;
 	
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<Section> sections; //la section dont le directeur ou le relais est responsable mais un relais peut intervenir dans plusieurs sections
@@ -41,7 +41,7 @@ public class User implements Serializable {
 		
 	}
 	
-	public User(Group group, String name, String firstname, String password, char gender, List<Section> sections) {
+	public User(GroupUser group, String name, String firstname, String password, char gender, List<Section> sections) {
 		this.group = group; //admin ou relais
 		this.name = name;
 		this.firstname = firstname;
@@ -99,11 +99,11 @@ public class User implements Serializable {
 		this.gender = gender;
 	}
 	
-	public Group getGroup() {
+	public GroupUser getGroup() {
 		return this.group;
 	}
 
-	public void setGroup(Group group) {
+	public void setGroup(GroupUser group) {
 		this.group = group;
 	}
 
