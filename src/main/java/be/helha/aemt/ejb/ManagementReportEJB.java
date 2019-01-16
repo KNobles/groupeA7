@@ -2,9 +2,14 @@ package be.helha.aemt.ejb;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
 import be.helha.aemt.dao.DAOReport;
 import be.helha.aemt.entities.Report;
 
+@LocalBean
+@Stateless
 public class ManagementReportEJB implements IManagementReportEJB {
 
 	DAOReport daoReport;

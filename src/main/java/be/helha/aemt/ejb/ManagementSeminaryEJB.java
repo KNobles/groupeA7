@@ -2,9 +2,14 @@ package be.helha.aemt.ejb;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
 import be.helha.aemt.dao.DAOSeminary;
 import be.helha.aemt.entities.Seminary;
 
+@LocalBean
+@Stateless
 public class ManagementSeminaryEJB implements IManagementSeminaryEJB{
 
 	DAOSeminary daoSeminary;

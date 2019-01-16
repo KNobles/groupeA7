@@ -2,9 +2,14 @@ package be.helha.aemt.ejb;
 
 import java.util.List;
 
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+
 import be.helha.aemt.dao.DAOTutoring;
 import be.helha.aemt.entities.Tutoring;
 
+@LocalBean
+@Stateless
 public class ManagementTutoringEJB implements IManagementTutoringEJB {
 
 	DAOTutoring daoTutoring;
