@@ -36,6 +36,11 @@ public class Seminary {
 		
 	}
 	
+	public Seminary(String theme, String date) {
+		this.dateTime = date;
+		this.theme = theme;
+	}
+	
 	public Seminary(String theme, String date, List<Section> sections) {
 		this.theme = theme;
 		this.dateTime = date;

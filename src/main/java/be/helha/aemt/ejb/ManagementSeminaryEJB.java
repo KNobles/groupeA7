@@ -2,6 +2,7 @@ package be.helha.aemt.ejb;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
@@ -12,7 +13,8 @@ import be.helha.aemt.entities.Seminary;
 @Stateless
 public class ManagementSeminaryEJB implements IManagementSeminaryEJB{
 
-	DAOSeminary daoSeminary;
+	@EJB
+	private DAOSeminary daoSeminary;
 	
 	@Override
 	public List<Seminary> selectAll() {
@@ -37,6 +39,11 @@ public class ManagementSeminaryEJB implements IManagementSeminaryEJB{
 	@Override
 	public void delete(Seminary s) {
 		daoSeminary.deleteSeminary(s);
+	}
+
+	@Override
+	public String select(Long idStudent) {
+		return daoSeminary.select(idStudent);
 	}
 
 }

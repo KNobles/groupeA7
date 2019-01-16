@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -11,11 +12,27 @@ import be.helha.aemt.entities.Seminary;
 
 @Stateless
 public class DAOSeminary {
+	
 	@PersistenceContext(unitName="groupeA7JTA")
 	private EntityManager em;
 	
 	public List<Seminary> selectAll(){
+		System.out.println("coucou");
 		return em.createQuery("SELECT s FROM Seminary s").getResultList();
+	}
+	
+	public String select(Long idStudent) {
+		String sSelect="SELECT s FROM Seminary s  JOIN s.students sem WHERE sem.idStudent =?1";
+
+		Query query = em.createQuery(sSelect);
+		query.setParameter(1, idStudent);
+		try {
+			query.getSingleResult();
+			return "Présent";
+		} catch(NoResultException e) {
+			return "Absent";
+		}
+
 	}
 	
 	public Seminary add(Seminary s) {

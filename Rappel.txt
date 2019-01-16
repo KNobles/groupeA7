@@ -1,12 +1,11 @@
 Créér/Copier un fichier classpath pour la fin.
 
-RONFLEX : refaire design navbar.xhtml avec primefaces
-
 Optimisation : Interface pour ajouter / supprimer les sections? 
 	-> ces méthodes sont redondantes dans les classes "Course", "Seminary" et "User"
 	-> ajout récent de listes, vérifier que toutes les méthodes d'ajout/suppression sont présentes
 	
-Ne pas touhcer seminaire.xhtml
 
 La structure du WEBAPP n'est pas correcte (trop de dossiers)
 -> créer un source folder nommé "src/main/webapp et ensuite dedans se trouve le dossier WEB-INF et les pages
+
+ATTENTION : les liens URL dans navbar on été mis pour que ça marche en localhost. A changer lors du passage sur serveur distant
