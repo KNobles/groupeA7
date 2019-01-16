@@ -42,7 +42,7 @@ public class User implements Serializable {
 	}
 	
 	public User(Group group, String name, String firstname, String password, char gender, List<Section> sections) {
-		this.group = group;
+		this.group = group; //admin ou relais
 		this.name = name;
 		this.firstname = firstname;
 		this.password = password;

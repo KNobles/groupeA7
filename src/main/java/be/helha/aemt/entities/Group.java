@@ -22,4 +22,7 @@ public class Group implements Serializable {
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<User> users;
 
+	public Group() {
+		
+	}
 }
