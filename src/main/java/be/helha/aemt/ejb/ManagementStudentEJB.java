@@ -6,7 +6,9 @@ import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
+import be.helha.aemt.dao.DAOSection;
 import be.helha.aemt.dao.DAOStudent;
+import be.helha.aemt.entities.Section;
 import be.helha.aemt.entities.Student;
 
 @LocalBean
@@ -25,6 +27,8 @@ public class ManagementStudentEJB implements IManagementStudentEJB{
 	@Override
 	public Student add(Student s) {
 		// TODO Auto-generated method stub
+
+
 		return dao.add(s);
 	}
 

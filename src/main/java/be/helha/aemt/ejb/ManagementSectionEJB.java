@@ -25,8 +25,8 @@ public class ManagementSectionEJB implements IManagementSectionEJB {
 	}
 
 	@Override
-	public Section selectId(String code) {
-		return daoSection.selectId(code);
+	public Section selectId(long id) {
+		return daoSection.selectId(id);
 	}
 
 	@Override

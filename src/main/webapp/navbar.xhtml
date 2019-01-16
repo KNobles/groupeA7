@@ -24,6 +24,11 @@
 					
 				</f:facet>
 			</p:menubar>
+		</h:form>
+		
+		<h:form enctype="multipart/form-data">
+            <h:inputFile value="#{studentControl.file}"></h:inputFile>
+            <p:commandButton action="#{studentControl.save()}" value="Charger" ajax="false"/>
 		</h:form>	
 	
 </ui:composition>

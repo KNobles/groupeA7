@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entities.Student;
+import be.helha.aemt.util.StudentReader;
 
 @Stateless
 public class DAOStudent {
@@ -23,6 +24,7 @@ public class DAOStudent {
 		em.persist(s);
 		return s;
 	}
+
 	
 	public Student selectId(Long id) {
 		Query query;

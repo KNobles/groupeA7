@@ -18,18 +18,23 @@ public class DAOSection {
 	}
 	
 	public Section add(Section s) {
-		em.persist(s);
-		return s;
+		
+	
+			em.persist(s);
+			return s;
+	
 	}
 	
-	public Section selectId(String code) {
+	public Section selectId(long id) {
 		Query query;
-		String sSelect="SELECT s FROM Section s WHERE s.code=?1";
+		String sSelect="SELECT s FROM Section s WHERE s.id=?1";
 		query=em.createQuery(sSelect);
-		query.setParameter(1, code);
-		Section s = (Section)query.getSingleResult();
-		em.clear();
-		return s;
+		query.setParameter(1, id);
+		try {
+			return(Section)query.getSingleResult();
+		} catch(Exception e) {
+			return null;
+		}
 	}
 	
 	//Update

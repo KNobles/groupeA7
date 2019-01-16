@@ -12,7 +12,7 @@ public interface IManagementStudentEJB {
 	public List<Student> selectAll();
 	
 	public Student add(Student s);
-	
+		
 	public Student selectId(Long id);
 	
 	public Student update(Student s);

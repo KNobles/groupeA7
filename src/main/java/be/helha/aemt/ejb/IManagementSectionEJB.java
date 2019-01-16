@@ -13,7 +13,7 @@ public interface IManagementSectionEJB {
 	
 	public Section add(Section s);
 	
-	public Section selectId(String code);
+	public Section selectId(long id);
 	
 	public Section update(Section s);
 	

@@ -1,6 +1,8 @@
 package be.helha.aemt.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
@@ -12,6 +14,10 @@ import javax.persistence.Id;
 public class Section {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	
+
 	private String code; //abrégé de la section, ex : IG
 	private String name; //nom de la section, ex : Informatique de Gestion
 
@@ -22,6 +28,14 @@ public class Section {
 	public Section(String name, String code) {
 		this.name = name;
 		this.code = code;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getCode() {

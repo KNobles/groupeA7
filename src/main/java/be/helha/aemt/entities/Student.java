@@ -8,8 +8,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
 
 /**
  * 
@@ -32,6 +36,7 @@ public class Student {
 	private List<Report> reports;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@JoinColumn(name="CODE", referencedColumnName="CODE")
 	private Section section;
 	
 	public Student() {}
@@ -116,5 +121,29 @@ public class Student {
 	public String getFullName() {
 		return this.name + ", " + this.firstname;
 	}
+	
+	public Student loadFromRow(Row row,List<Section> sections)
+    {
+        DataFormatter dataFormatter = new DataFormatter();
+        this.firstname = dataFormatter.formatCellValue(row.getCell(0));
+        this.name = dataFormatter.formatCellValue(row.getCell(1));
+        switch(dataFormatter.formatCellValue(row.getCell(2)))
+        {
+        case "CT":
+            this.section = sections.stream().filter(section -> section.getName().equals("Comptabilité")).findFirst().get();
+            break;
+        case "IG":
+            this.section = sections.stream().filter(section -> section.getName().equals("Informatique de gestion")).findFirst().get();
+            break;
+        case "AD":
+            this.section = sections.stream().filter(section -> section.getName().equals("Assistant de direction")).findFirst().get();
+            break;
+        }
+        this.classCode = dataFormatter.formatCellValue(row.getCell(3));
+        this.coordBroadcast = dataFormatter.formatCellValue(row.getCell(4)).equals("accepte de diffuser");
+        this.photoBroadcast = dataFormatter.formatCellValue(row.getCell(5)).equals("accepte de diffuser");
+        
+        return this;
+    }
 
 }
