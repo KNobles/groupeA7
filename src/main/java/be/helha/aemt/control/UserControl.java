@@ -8,8 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -74,15 +74,18 @@ public class UserControl implements Serializable {
 		return "displayUsers.xhtml";
 	}
 
-	public String doLogIn() {
+	public String doLogIn(String mail, String password) {
+		this.authenticatedUser.setMail(mail);
+		this.authenticatedUser.setPassword(password);
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		try {
-			request.login(this.authenticatedUser.getMail(), this.authenticatedUser.getPassword());
 			System.out.println("Connexion de " + getAuthenticatedUser().getMail() + " avec le password : " + getAuthenticatedUser().getPassword());
+			request.login("duroisins@helha.be", "azerty");		
 		} catch (ServletException e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Connexion échouée!", null));
 			System.out.println("Connexion échouée");
+			System.out.println(this.authenticatedUser.toString());
 			return "loginerror.xhtml";
 		}
 		Principal principal = request.getUserPrincipal();

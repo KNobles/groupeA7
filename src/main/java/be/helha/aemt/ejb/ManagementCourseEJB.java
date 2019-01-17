@@ -2,6 +2,7 @@ package be.helha.aemt.ejb;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
@@ -12,7 +13,8 @@ import be.helha.aemt.entities.Course;
 @Stateless
 public class ManagementCourseEJB implements IManagementCourseEJB {
 
-	DAOCourse daoCourse;
+	@EJB
+	private DAOCourse daoCourse;
 	
 	@Override
 	public List<Course> selectAll() {
@@ -37,6 +39,11 @@ public class ManagementCourseEJB implements IManagementCourseEJB {
 	@Override
 	public void delete(Course c) {
 		daoCourse.deleteCourse(c);
+	}
+
+	@Override
+	public List<Course> selectBySection(String sectionCode) {
+		return daoCourse.selectBySection(sectionCode);
 	}
 
 	

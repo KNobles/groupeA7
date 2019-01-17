@@ -59,6 +59,10 @@ public class StudentControl {
 
 	}
 	
+	public List<Student> doSelectBySection(String section) {
+		return bean.selectBySection(section);
+	}
+	
 	public Part getFile() {
 		return file;
 	}

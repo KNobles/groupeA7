@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -21,6 +22,19 @@ public class DAOTutoring {
 	public Tutoring add(Tutoring t) {
 		em.persist(t);
 		return t;
+	}
+	
+	public String selectDemand(Long idStudent) {
+		Query query;
+		String sSelect="SELECT t FROM Tutoring t JOIN t.students s WHERE s.idStudent =?1";
+		query=em.createQuery(sSelect);
+		query.setParameter(1, idStudent);
+		try {
+			query.getSingleResult();
+			return "Demande";
+		} catch(NoResultException e) {
+			return "";
+		}
 	}
 	
 	public Tutoring selectId(Long id) {

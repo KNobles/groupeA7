@@ -11,6 +11,8 @@ public interface IManagementStudentEJB {
 	
 	public List<Student> selectAll();
 	
+	public List<Student> selectBySection(String section);
+	
 	public Student add(Student s);
 		
 	public Student selectId(Long id);

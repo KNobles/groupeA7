@@ -50,4 +50,8 @@ public class ManagementStudentEJB implements IManagementStudentEJB{
 		dao.deleteStudent(s);
 	}
 
+	public List<Student> selectBySection(String section) {
+		return dao.selectBySection(section);
+	}
+
 }

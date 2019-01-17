@@ -48,4 +48,12 @@ public class DAOStudent {
 			query.executeUpdate();
 		}
 
+		public List<Student> selectBySection(String section) {
+			Query query;
+			String sSelect="SELECT s FROM Student s WHERE s.section.code=?1";
+			query=em.createQuery(sSelect);
+			query.setParameter(1, section);
+			return query.getResultList();
+		}
+
 }

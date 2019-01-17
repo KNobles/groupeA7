@@ -24,6 +24,14 @@ public class DAOCourse {
 		return c;
 	}
 	
+	public List<Course> selectBySection(String sectionCode){
+		Query query;
+		String sSelect = "Select c FROM Course c JOIN c.sections s WHERE s.code =?1";
+		query=em.createQuery(sSelect);
+		query.setParameter(1, sectionCode);
+		return query.getResultList();
+	}
+	
 	public Course selectId(String id) {
 		Query query;
 		String sSelect="SELECT c FROM Course c WHERE c.code=?1";

@@ -11,6 +11,8 @@ public interface IManagementCourseEJB {
 
 	public List<Course> selectAll();
 	
+	public List<Course> selectBySection(String sectionCode);
+	
 	public Course add(Course c);
 	
 	public Course selectId(String code);
