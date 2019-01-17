@@ -20,6 +20,7 @@ public class SortableStudent<E> extends DataModel<E>{
 			this.rows = new Integer[rowCount];
 			for(int i = 0; i < rowCount; ++i){
 				rows[i] = i;
+				
 			}
 		}
 	}
