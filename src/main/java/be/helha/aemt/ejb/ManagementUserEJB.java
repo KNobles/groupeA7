@@ -18,7 +18,6 @@ public class ManagementUserEJB implements IManagementUserEJB{
 
 	@Override
 	public List<Users> selectAll() {
-		// TODO Auto-generated method stub
 		return this.dao.selectAll();
 	}
 
@@ -28,20 +27,17 @@ public class ManagementUserEJB implements IManagementUserEJB{
 	}
 
 	@Override
-	public Users selectId(String id) {
-		// TODO Auto-generated method stub
-		return this.dao.selectId(id);
+	public Users searchByMail(String mail) {
+		return this.dao.findByMail(mail);
 	}
 
 	@Override
 	public Users update(Users d) {
-		// TODO Auto-generated method stub
 		return this.dao.update(d);
 	}
 
 	@Override
 	public void delete(Users d) {
-		// TODO Auto-generated method stub
 		this.dao.delete(d);
 	}
 }

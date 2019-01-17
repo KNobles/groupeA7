@@ -40,15 +40,24 @@ public class Users implements Serializable {
 	@Column(name="firstname", nullable=false, length=30)
 	private String firstname;
 	
-	@Column(name="password", nullable=false, length=64)
+	@Column(name="password", nullable=false, length=255)
 	private String password; // /!\ le directeur ne doit pas encoder directement les mots de passe des nouveaux utilisateurs + SHA-256 pour les stocker
 	
-	@Column(name="mail", nullable=false, length=255)
+	@Column(name="mail", nullable=false, length=41)
 	private String mail;
 	private char gender;
 	
 	public Users() {
 		
+	}
+	
+	//un constructeur sans groupe et sans section
+	public Users(String name, String firstname, String password, char gender) {
+		this.name = name;
+		this.firstname = firstname;
+		this.password = password;
+		this.gender = gender;		
+		setMail();
 	}
 	
 	public Users(GroupUser group, String name, String firstname, String password, char gender, List<Section> sections) {

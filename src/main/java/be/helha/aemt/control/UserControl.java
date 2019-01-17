@@ -1,12 +1,16 @@
 package be.helha.aemt.control;
 
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.servlet.ServletException;
@@ -58,6 +62,10 @@ public class UserControl implements Serializable {
 		return this.bean.selectAll();
 	}
 	
+	public Users doSearchUserByMail(String mail) {
+		return this.bean.searchByMail(mail);
+	}
+	
 	public String doAdd() {
 		log.info(this.user.toString() + " a bien été ajouté comme relais d'aide à la réussite!");
 		this.bean.add(this.user);
@@ -65,10 +73,24 @@ public class UserControl implements Serializable {
 	}
 
 	public String doLogIn() {
-		if((!this.user.getMail().equals("test@helha.be"))&&(!this.user.getPassword().equals("admin"))) {
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
+		try {
+			request.login(this.user.getMail(), this.user.getPassword());
+		} catch (ServletException e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Connexion échouée!", null));
 			return "loginerror.xhtml";
 		}
-		return "admin/home.xhtml";
+		Principal principal = request.getUserPrincipal();
+		this.user = this.bean.searchByMail(principal.getName());
+		log.info("Authentication réussie pour l'utilisateur : " + principal.getName());
+		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+		Map<String, Object> sessionMap = externalContext.getSessionMap();
+		sessionMap.put("Users", this.user);
+		if(request.isUserInRole("relay")) {
+			return "relay/home.xhtml?faces-redirect=true";
+		}
+		return "admin/home.xhtml?faces-redirect=true";
 	}
 	
 	public String doLogOut(){

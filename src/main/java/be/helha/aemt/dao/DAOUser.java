@@ -16,11 +16,12 @@ import be.helha.aemt.util.AuthenticationUtils;
 @Stateless
 public class DAOUser {
 	
-	@PersistenceContext(unitName="groupeA7JTA")
+	@PersistenceContext(unitName="groupeA7JTA") 
 	private EntityManager em;
 	
 	public List<Users> selectAll(){
-		return this.em.createQuery("SELECT u FROM Users u", Users.class).getResultList();
+		return this.em.createQuery("SELECT u FROM Users u", Users.class).getResultList(); 
+		//renvoie tous les utilisateurs de la bdd
 	}
 	
 	public Users add(Users u) {
@@ -42,17 +43,18 @@ public class DAOUser {
 		return u;
 	}
 	
-	public Users selectId(String mail) {
+	//Search by email
+	public Users findByMail(String mail) {
 		Query query;
-		String sSelect="SELECT u FROM Users u WHERE u.mail=?1";
+		String sSelect="SELECT u FROM Users u WHERE u.mail=?1"; // on cherche si un utilisateur dispose du mail placé en argument
 		query=this.em.createQuery(sSelect);
 		query.setParameter(1, mail);
-		return (Users)query.getSingleResult();
+		return (Users)query.getSingleResult(); //éxécution de la recherche + retour de l'utilisateur si existant
 	}
 	
 	//Update
 	public Users update(Users u) {
-		return this.em.merge(u);
+		return this.em.merge(u); 
 	}
 	
 	//Delete
@@ -60,7 +62,6 @@ public class DAOUser {
 		Query query = this.em.createQuery("DELETE u FROM Users u WHERE mail =?1");
 		query.setParameter(1, u.getMail());
 
-		query.executeUpdate();
+		query.executeUpdate(); //suppression de l'utilisateur 
 	}
-
 }

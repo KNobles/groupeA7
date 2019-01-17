@@ -13,9 +13,10 @@ public interface IManagementUserEJB {
 	
 	public Users add(Users d);
 	
-	public Users selectId(String id);
+	public Users searchByMail(String mail);
 	
 	public Users update(Users d);
 	
 	public void delete(Users d);
+
 }
