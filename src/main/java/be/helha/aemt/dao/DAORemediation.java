@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import be.helha.aemt.entities.Remediation;
+import be.helha.aemt.entities.Student;
 
 @Stateless
 public class DAORemediation {
@@ -30,6 +31,10 @@ public class DAORemediation {
 		Remediation r =(Remediation) query.getSingleResult();
 		em.clear();
 		return r;	
+	}
+	
+	public List<Student> selectAllStudents() {
+		return em.createQuery("SELECT r.students FROM Remediation r JOIN r.students s").getResultList();
 	}
 	
 	public Remediation updateRemediation(Remediation r) {

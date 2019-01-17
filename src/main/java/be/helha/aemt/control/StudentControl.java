@@ -3,8 +3,11 @@ package be.helha.aemt.control;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -20,12 +23,22 @@ import be.helha.aemt.util.StudentReader;
 
 @RequestScoped
 @Named
-public class StudentControl {
+public class StudentControl implements Serializable{
 	
 	@EJB
 	private ManagementStudentEJB bean;
 	private Student student = new Student();
-	List<Student> students;
+	private String name;
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	List<Student> students = new ArrayList<Student>();
 	
 	private Part file; // +getter+setter
 	public void save() {
@@ -91,6 +104,24 @@ public class StudentControl {
 	 public String doAdd() {
 		 bean.add(student);
 		 return "liste.xhtml";
-	 }	
+	 }
+
+	public List<Student> doSelectName(String name) {
+		return bean.selectName(name);
+	}
+	
+	public List<Student> showList() {
+		bean.selectAll().forEach(o -> {
+			if(o.getName().equals(getName())) {
+				System.out.println(o);
+			}
+		});
+		System.out.println(bean.selectName(this.name));
+		return bean.selectName(getName());
+	}
+	
+	public String sortByName() {
+		return bean.sortByName();
+	}
 
 }
