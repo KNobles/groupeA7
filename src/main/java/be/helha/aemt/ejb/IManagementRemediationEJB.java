@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import be.helha.aemt.entities.Remediation;
+import be.helha.aemt.entities.Student;
 
 /**
  * 
@@ -24,4 +25,6 @@ public interface IManagementRemediationEJB {
 	public Remediation updateAdmin(Remediation r);
 	
 	public void deleteAllRemediation(Remediation r);
+	
+	public List<Student> selectAllStudents();
 }

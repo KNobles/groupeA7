@@ -2,11 +2,13 @@ package be.helha.aemt.ejb;
 
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import be.helha.aemt.dao.DAORemediation;
 import be.helha.aemt.entities.Remediation;
+import be.helha.aemt.entities.Student;
 
 /**
  * 
@@ -17,8 +19,8 @@ import be.helha.aemt.entities.Remediation;
 @LocalBean
 @Stateless
 public class ManagementRemediationEJB implements IManagementRemediationEJB{
-
-	DAORemediation daoRemediation;
+	@EJB
+	private DAORemediation daoRemediation;
 	
 	@Override
 	public List<Remediation> selectAll() {
@@ -43,6 +45,11 @@ public class ManagementRemediationEJB implements IManagementRemediationEJB{
 	@Override
 	public void deleteAllRemediation(Remediation r) {
 		daoRemediation.deleteAllRemediations(r);
+	}
+
+	@Override
+	public List<Student> selectAllStudents() {
+		return daoRemediation.selectAllStudents();
 	}
 
 }

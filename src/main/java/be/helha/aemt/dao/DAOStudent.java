@@ -36,6 +36,16 @@ public class DAOStudent {
 		return s;
 	}
 	
+	public List<Student> selectName(String firstname) {
+		Query query;
+		String sSelect="SELECT s FROM Student s WHERE s.firstname=?1";
+		query=em.createQuery(sSelect);
+		query.setParameter(1, firstname);
+		List<Student> s = query.getResultList();
+		em.clear();
+		return s;
+	}
+	
 	//Update
 		public Student updateStudent(Student s) {
 			return em.merge(s);
