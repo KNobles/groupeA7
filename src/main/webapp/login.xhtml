@@ -18,10 +18,13 @@
 	            <h:form>
 		            <h:panelGrid columns="2">
 		            	<h:outputLabel for="username">Identifiant :</h:outputLabel>
-		            	<h:inputText name="j_username" id="username" value="#{userControl.authenticatedUser.mail}" a:autofocus="true" a:required="true" class="p-1 my-1"/>
-		            			            	
+		            	<h:inputText id="username" value="#{userControl.authenticatedUser.mail}" a:autofocus="true" a:required="true" class="p-1 my-1"/>
+		            	
 		            	<h:outputLabel for="password">Mot de passe:</h:outputLabel>
-		            	<h:inputSecret name="j_password" id="password" value="#{userControl.authenticatedUser.password}" a:required="true" class="p-1"/>
+		            	<h:inputSecret id="password" value="#{userControl.authenticatedUser.password}" a:required="true" class="p-1"/>
+		            	
+		            	<h:outputLabel>Mail = #{userControl.authenticatedUser.mail}</h:outputLabel>
+		            	<h:outputLabel>Password = #{userControl.authenticatedUser.password}</h:outputLabel>
 		            </h:panelGrid>
 		            <hr class="my-2"/>
 <!-- 	                <input type="reset" value="Réinitialiser le formulaire" class="btn btn-outline-secondary mr-1"/>                 -->
