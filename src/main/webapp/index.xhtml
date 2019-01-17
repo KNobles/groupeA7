@@ -12,7 +12,7 @@
 	
 	<h:body>
 		<ui:include src="navbar.xhtml" /> <!-- à garder seulement le temps des tests => SEULEMENT DISPO POUR LES UTILISATEURS CONNECTÉS -->
-		<h:form>
+		<h:form> <!-- action="#{userControl.doLogOut()}" -->
 			<p>				
 				<h:commandButton action="login" value="Accès administrateur" /> <!-- redirige vers admin/home si ok -->
 			</p>
