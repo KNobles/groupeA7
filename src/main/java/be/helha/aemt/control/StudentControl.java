@@ -72,6 +72,10 @@ public class StudentControl implements Serializable{
 
 	}
 	
+	public List<Student> doSelectBySection(String section) {
+		return bean.selectBySection(section);
+	}
+	
 	public Part getFile() {
 		return file;
 	}

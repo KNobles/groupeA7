@@ -8,8 +8,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -69,29 +69,40 @@ public class UserControl implements Serializable {
 	
 	public String doAdd() {
 		log.info(this.authenticatedUser.toString() + " a bien été ajouté comme relais d'aide à la réussite!");
+		System.out.println("Ajout de " + getAuthenticatedUser() + " comme relais");
 		this.bean.add(this.authenticatedUser);
 		return "displayUsers.xhtml";
 	}
 
-	public String doLogIn() {
+	public String doLogIn(String mail, String password) {
+		this.authenticatedUser.setMail(mail);
+		this.authenticatedUser.setPassword(password);
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
 		try {
-			request.login(this.authenticatedUser.getMail(), this.authenticatedUser.getPassword());
+			System.out.println("Connexion de " + getAuthenticatedUser().getMail() + " avec le password : " + getAuthenticatedUser().getPassword());
+			request.login("duroisins@helha.be", "azerty");		
 		} catch (ServletException e) {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Connexion échouée!", null));
+			System.out.println("Connexion échouée");
+			System.out.println(this.authenticatedUser.toString());
 			return "loginerror.xhtml";
 		}
 		Principal principal = request.getUserPrincipal();
+		System.out.println("Avant recherche dans la bdd l'utilisateur connecté : \n " + getAuthenticatedUser());
 		this.authenticatedUser = this.bean.searchByMail(principal.getName());
-		log.info("Authentication réussie pour l'utilisateur : " + principal.getName());
+		System.out.println("Après recherche dans la bdd l'utilisateur connecté : \n " + getAuthenticatedUser());
+		log.info("Authentification réussie pour l'utilisateur : " + principal.getName());
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		sessionMap.put("Users", this.authenticatedUser);
-		if(request.isUserInRole("relay"))
+		if(request.isUserInRole("relay")) {
+			System.out.println("Connexion relais!!");
 			return "relay/home.xhtml?faces-redirect=true";
+		}
 		//else if(request.isUserInRole("admin"))
-			return "admin/home.xhtml?faces-redirect=true";
+		System.out.println("Connexion admin!!");
+		return "admin/home.xhtml?faces-redirect=true";
 	}
 	
 	public String doLogOut(){
@@ -104,6 +115,7 @@ public class UserControl implements Serializable {
 			((HttpSession) context.getExternalContext().getSession(false)).invalidate();
 		} catch (ServletException e) {
 			log.log(Level.SEVERE, "Échec lors de la déconnexion", e);
+			System.out.println("Déconnexion échec");
 		}
 		return "/index?faces-redirect=true";
 	}

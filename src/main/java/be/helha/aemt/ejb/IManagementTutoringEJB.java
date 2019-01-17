@@ -11,6 +11,8 @@ public interface IManagementTutoringEJB {
 	
 	public List<Tutoring> selectAll();
 	
+	public String selectDemand(Long idStudent);
+	
 	public Tutoring add(Tutoring t);
 	
 	public Tutoring selectId(Long id);

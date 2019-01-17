@@ -89,8 +89,10 @@ public class ManagementStudentEJB implements IManagementStudentEJB{
 		sortAscending = true;
 	  }
 		return null;
+	}
 
-
+	public List<Student> selectBySection(String section) {
+		return dao.selectBySection(section);
 	}
 
 }
