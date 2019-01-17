@@ -1,8 +1,6 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="groupeA7JTA" transaction-type="JTA"> <!-- les transactions sont gérées par le serveur payara -->
-	<jta-data-source>jdbc/groupeA7</jta-data-source>
-	
-		<class>be.helha.aemt.entities.Coordinator</class> <!-- à supprimer? -->
+	<jta-data-source>jdbc/groupeA7</jta-data-source> <!-- à supprimer? -->
 		<class>be.helha.aemt.entities.Course</class>
 		<class>be.helha.aemt.entities.GroupUser</class>
 		<class>be.helha.aemt.entities.Interview</class>
