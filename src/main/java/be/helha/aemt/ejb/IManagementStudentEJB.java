@@ -16,14 +16,11 @@ public interface IManagementStudentEJB {
 	public Student add(Student s);
 		
 	public Student selectId(Long id);
-	
-	public List<Student> selectName(String name);
-	
+		
 	public Student update(Student s);
 	
 	public void delete(Student s);
 	
-	public String sortByName();
 
 
 }

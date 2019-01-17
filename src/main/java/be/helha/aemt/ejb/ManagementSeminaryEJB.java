@@ -42,8 +42,12 @@ public class ManagementSeminaryEJB implements IManagementSeminaryEJB{
 	}
 
 	@Override
-	public String select(Long idStudent) {
-		return daoSeminary.select(idStudent);
+	public String select(Long idStudent, Long idSeminary) {
+		return daoSeminary.select(idStudent, idSeminary);
+	}
+	
+	public Long selectCount(Long idStudent) {
+		return daoSeminary.selectCount(idStudent);
 	}
 
 }

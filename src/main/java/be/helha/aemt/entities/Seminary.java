@@ -1,5 +1,6 @@
 package be.helha.aemt.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -90,6 +91,11 @@ public class Seminary {
 	public boolean removeSection(Section s) {
 		return this.sections.remove(s);
 	}
+	
+	public void initStudents() {
+		if(students == null)
+			students=new ArrayList<>();
+	}
 
 	/**
 	 * Exemple : 
@@ -137,6 +143,13 @@ public class Seminary {
 		} else if (!this.sections.equals(other.sections))
 			return false;
 		return true;
+	}
+
+	public void addStudent(Student student) {
+		if(!students.contains(student)) {
+			students.add(student);
+		}
+		
 	}
 	
 }

@@ -27,11 +27,20 @@ public class SeminaryControl {
 		return list;
 	}
 	
-	public String select(long idStudent) {
-		String result = bean.select(idStudent);
+	public Seminary doAdd() {
+		System.out.println("do add");
+		return bean.add(seminary);
+	}
+	
+	public String select(long idStudent, long idSeminary) {
+		String result = bean.select(idStudent, idSeminary);
 		if(result.equals("Présent"))
 			nPresent++;
 		return result;
+	}
+	
+	public Long doSelectCount(long idStudent) {
+		return bean.selectCount(idStudent);
 	}
 
 	public ManagementSeminaryEJB getBean() {

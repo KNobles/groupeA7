@@ -110,22 +110,5 @@ public class StudentControl implements Serializable{
 		 return "liste.xhtml";
 	 }
 
-	public List<Student> doSelectName(String name) {
-		return bean.selectName(name);
-	}
 	
-	public List<Student> showList() {
-		bean.selectAll().forEach(o -> {
-			if(o.getName().equals(getName())) {
-				System.out.println(o);
-			}
-		});
-		System.out.println(bean.selectName(this.name));
-		return bean.selectName(getName());
-	}
-	
-	public String sortByName() {
-		return bean.sortByName();
-	}
-
 }

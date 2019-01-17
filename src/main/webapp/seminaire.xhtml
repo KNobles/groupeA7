@@ -2,7 +2,8 @@
 <html xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Séminaires</title>
 	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
@@ -12,8 +13,12 @@
 </h:head>
 <h:body>
 	<ui:include src="navbar.xhtml" />
-
-	<button type="button" class="btn btn-primary">Primary</button>
+	
+	<h:form>
+		Intitule    :<h:inputText value="#{seminaryControl.seminary.theme}"></h:inputText>
+		Date      :<h:inputText value="#{seminaryControl.seminary.dateTime}"></h:inputText>
+		<h:commandButton value="ajouter" action="#{seminaryControl.doAdd()}"></h:commandButton>	
+	</h:form>
 
 	<table class="table table-hover table-striped"
 		style="table-layout: fixed;">
@@ -22,7 +27,10 @@
 				<th scope="col">Etudiant</th>
 				<ui:repeat value="#{seminaryControl.doSelectAll()}" var="seminary"
 				varStatus="loop">
-					<th scope="col">#{seminary.theme}</th>
+					<th scope="col">
+						<p:commandButton value="#{seminary.theme}" action="#{ficheSeminaryControl.buildSeminary(seminary)}"/>
+					
+					</th>
 				</ui:repeat>
 				<th scope="col">Total</th>
 			</tr>
@@ -34,7 +42,7 @@
 					<td>#{student.name} #{student.firstname}</td>
 					<ui:repeat value="#{seminaryControl.doSelectAll()}" var="seminary"
 				varStatus="loop">
-						<td>#{seminaryControl.select(student.idStudent)}</td>
+						<td>#{seminaryControl.select(student.idStudent, seminary.idSeminary)}</td>
 					</ui:repeat>
 					<td>
 						#{seminaryControl.nPresent}/#{seminaryControl.n}

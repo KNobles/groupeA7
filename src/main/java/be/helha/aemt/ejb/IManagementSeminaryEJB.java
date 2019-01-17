@@ -11,7 +11,7 @@ public interface IManagementSeminaryEJB {
 	
 	public List<Seminary> selectAll();
 	
-	public String select(Long idStudent);
+	public String select(Long idStudent, Long idSeminary);
 	
 	public Seminary add(Seminary s);
 	

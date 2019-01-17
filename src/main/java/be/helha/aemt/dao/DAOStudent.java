@@ -46,7 +46,7 @@ public class DAOStudent {
 		return s;
 	}
 	
-	//Update
+	//Upddate
 		public Student updateStudent(Student s) {
 			return em.merge(s);
 		}
@@ -64,6 +64,17 @@ public class DAOStudent {
 			query=em.createQuery(sSelect);
 			query.setParameter(1, section);
 			return query.getResultList();
+		}
+
+		public Student selectByName(String name, String firstname) {
+			Query query;
+			String sSelect = "SELECT s FROM Student s WHERE s.name =?1 AND s.firstname =?2";
+			query=em.createQuery(sSelect);
+			query.setParameter(1, name);
+			query.setParameter(2, firstname);
+			Student s = (Student)query.getSingleResult();
+			em.clear();
+			return s;
 		}
 
 }

@@ -17,15 +17,15 @@ public class DAOSeminary {
 	private EntityManager em;
 	
 	public List<Seminary> selectAll(){
-		System.out.println("coucou");
 		return em.createQuery("SELECT s FROM Seminary s").getResultList();
 	}
 	
-	public String select(Long idStudent) {
-		String sSelect="SELECT s FROM Seminary s  JOIN s.students sem WHERE sem.idStudent =?1";
+	public String select(Long idStudent, Long idSeminary) {
+		String sSelect="SELECT s FROM Seminary s  JOIN s.students sem WHERE sem.idStudent =?1 AND s.idSeminary=?2";
 
 		Query query = em.createQuery(sSelect);
 		query.setParameter(1, idStudent);
+		query.setParameter(2, idSeminary);
 		try {
 			query.getSingleResult();
 			return "Présent";
@@ -33,6 +33,17 @@ public class DAOSeminary {
 			return "Absent";
 		}
 
+	}
+	
+	public Long selectCount(Long idStudent) {
+		String sSelect="SELECT count(s) FROM Seminary s JOIN s.students st WHERE st.idStudent =?1";
+		Query query = em.createQuery(sSelect);
+		query.setParameter(1, idStudent);
+		try {
+			return (Long)query.getSingleResult();
+		} catch(NoResultException e) {
+			return 0L;
+		}
 	}
 	
 	public Seminary add(Seminary s) {
