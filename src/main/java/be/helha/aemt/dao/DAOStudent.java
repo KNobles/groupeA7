@@ -36,6 +36,18 @@ public class DAOStudent {
 		return s;
 	}
 	
+	public String getSection(Long idStudent) {
+		Query query;
+		String sSelect="SELECT s FROM Student s WHERE s.idStudent=?1";
+		query=em.createQuery(sSelect);
+		query.setParameter(1, idStudent);
+		Student s =(Student)query.getSingleResult();
+		String result = s.getSection().getName();
+		em.clear();
+		return result;
+		
+	}
+	
 	public List<Student> selectName(String firstname) {
 		Query query;
 		String sSelect="SELECT s FROM Student s WHERE s.firstname=?1";

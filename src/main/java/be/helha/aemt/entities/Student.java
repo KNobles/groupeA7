@@ -1,5 +1,6 @@
 package be.helha.aemt.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -125,8 +126,8 @@ public class Student {
 	public Student loadFromRow(Row row,List<Section> sections)
     {
         DataFormatter dataFormatter = new DataFormatter();
-        this.firstname = dataFormatter.formatCellValue(row.getCell(0));
-        this.name = dataFormatter.formatCellValue(row.getCell(1));
+        this.name = dataFormatter.formatCellValue(row.getCell(0));
+        this.firstname = dataFormatter.formatCellValue(row.getCell(1));
         switch(dataFormatter.formatCellValue(row.getCell(2)))
         {
         case "CT":
@@ -145,5 +146,19 @@ public class Student {
         
         return this;
     }
+
+	public List<Report> getReports() {
+		List<Report> results = new ArrayList<>();
+		for(Report r : reports) {
+			results.add(r);
+		}
+		return results;
+	}
+
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
+	}
+	
+	
 
 }

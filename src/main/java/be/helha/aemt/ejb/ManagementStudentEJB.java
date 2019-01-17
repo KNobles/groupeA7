@@ -59,5 +59,10 @@ public class ManagementStudentEJB implements IManagementStudentEJB{
 	public Student selectByName(String name, String firstname) {
 		return dao.selectByName(name, firstname);
 	}
+	
+	public String getSection(Long idStudent) {
+		return dao.getSection(idStudent);
+	}
+	
 
 }

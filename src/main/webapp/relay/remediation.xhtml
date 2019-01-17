@@ -33,8 +33,8 @@
 				varStatus="loop">
 				
 				<tr>
-					<td>#{student.firstname}</td>
 					<td>#{student.name}</td>
+					<td>#{student.firstname}</td>
 					<td>#{student.classCode}</td>
 					<td>
 						<button class="btn btn-primary" type="button"
@@ -50,15 +50,35 @@
 								<table class="table table-bordered" style="">
 									<thead>
 										<tr>
-											<th scope="col">Séminaires</th>
-											<th scope="col">Description</th>
+											<th scope="col">Section</th>
+											<th scope="col">Présence Séminaires</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
+											<td>#{studentControl.doGetSection(student.idStudent)}</td>										
 											<td>#{seminaryControl.doSelectCount(student.idStudent)}</td>
-											<td>Bonjour je m'appelle #{student.name} et je vous aime</td>
 										</tr>
+									</tbody>
+
+								</table>
+								
+								<table class="table table-bordered" style="">
+									<thead>
+										<tr>
+											<th scope="col">Auteur</th>
+											<th scope="col">Date</th>
+											<th scope="col">Note</th>
+										</tr>
+									</thead>
+									<tbody>
+										<ui:repeat value="#{studentControl.doSelectReport(student.idStudent)}" var="report">
+										<tr>
+											<td>#{report.author.name} #{report.author.firstname}</td>										
+											<td>#{report.date}</td>
+											<td>#{report.note}</td>
+										</tr>
+										</ui:repeat>
 									</tbody>
 
 								</table>

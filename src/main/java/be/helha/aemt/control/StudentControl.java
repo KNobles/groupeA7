@@ -18,6 +18,7 @@ import javax.servlet.http.Part;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 import be.helha.aemt.ejb.ManagementStudentEJB;
+import be.helha.aemt.entities.Report;
 import be.helha.aemt.entities.Student;
 import be.helha.aemt.util.StudentReader;
 
@@ -108,6 +109,15 @@ public class StudentControl implements Serializable{
 	 public String doAdd() {
 		 bean.add(student);
 		 return "liste.xhtml";
+	 }
+	 
+	 public String doGetSection(Long idStudent) {
+		 return bean.getSection(idStudent);
+	 }
+	 
+	 public List<Report> doSelectReport(Long idStudent){
+		 Student student = bean.selectId(idStudent);
+		 return student.getReports();
 	 }
 
 	
