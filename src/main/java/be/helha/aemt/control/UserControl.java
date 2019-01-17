@@ -87,10 +87,10 @@ public class UserControl implements Serializable {
 		ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
 		Map<String, Object> sessionMap = externalContext.getSessionMap();
 		sessionMap.put("Users", this.user);
-		if(request.isUserInRole("relay")) {
+		if(request.isUserInRole("relay"))
 			return "relay/home.xhtml?faces-redirect=true";
-		}
-		return "admin/home.xhtml?faces-redirect=true";
+		//else if(request.isUserInRole("admin"))
+			return "admin/home.xhtml?faces-redirect=true";
 	}
 	
 	public String doLogOut(){
