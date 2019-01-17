@@ -6,7 +6,6 @@
 	<h:head>
 		<title>Espace Administrateur</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	 	<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/images/favicon.ico"/>
 	</h:head>
 	
 	<h:body>
@@ -16,6 +15,9 @@
 		
 		<h:form>
 			<h:commandButton action="/index.xhtml" value="Retour à la page d'accueil" />
+			
+			<h:commandButton action="createUser" value="Créer un utilisateur"/>
+			<h:commandButton action="displayUsers" value ="Afficher les utilisateurs"/>
 		</h:form>
 		
 	</h:body>

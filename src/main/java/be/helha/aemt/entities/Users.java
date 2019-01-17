@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  * 
@@ -19,9 +21,10 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
+@Table(name="users")
 public class Users implements Serializable {
 	
-	@Id
+	@Id //clef primaire
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idUser;
 	
@@ -31,9 +34,16 @@ public class Users implements Serializable {
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<Section> sections; //la section dont le directeur ou le relais est responsable mais un relais peut intervenir dans plusieurs sections
 	
+	@Column(name="name", nullable=false, length=30)
 	private String name;
+	
+	@Column(name="firstname", nullable=false, length=30)
 	private String firstname;
-	private String password; // /!\ le directeur ne doit pas encoder directement les mots de passe des nouveaux utilisateurs
+	
+	@Column(name="password", nullable=false, length=64)
+	private String password; // /!\ le directeur ne doit pas encoder directement les mots de passe des nouveaux utilisateurs + SHA-256 pour les stocker
+	
+	@Column(name="mail", nullable=false, length=255)
 	private String mail;
 	private char gender;
 	
@@ -46,9 +56,10 @@ public class Users implements Serializable {
 		this.name = name;
 		this.firstname = firstname;
 		this.password = password;
-		this.mail = name.toLowerCase() + "." + firstname.toLowerCase().charAt(0) + "@helha.be";
 		this.gender = gender;
 		this.sections = sections;
+		
+		setMail();
 	}
 
 	public String getName() {
@@ -95,6 +106,10 @@ public class Users implements Serializable {
 		this.mail = mail;
 	}
 	
+	public void setMail() {
+		this.mail = this.name.toLowerCase() + "." + this.firstname.toLowerCase().charAt(0) + "@helha.be";
+	}
+	
 	public void setGender(char gender) {
 		this.gender = gender;
 	}
@@ -131,7 +146,9 @@ public class Users implements Serializable {
 	public String toString() {
 		if(this.gender == 'm' || this.gender == 'M')
 			return "Mr " + this.name;
-		return "Mme " + this.name;
+		else if(this.gender == 'f' || this.gender == 'F')
+			return "Mme " + this.name;
+		return this.name;
 	}
 
 	@Override

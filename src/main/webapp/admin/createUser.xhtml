@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<h:head>
+		<title>Création d'un relais</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</h:head>
+	
+	<h:body>
+		<ui:include src="/navbar.xhtml"/>
+	
+		<h1>Ajout d'un nouveau relais d'aide à la réussite</h1>
+		
+		<h:form>
+			<h:commandButton action="/index.xhtml" value="Retour à la page d'accueil" />
+			
+			<h:panelGrid columns="2">
+				<h:outputLabel for="gender">Genre:</h:outputLabel>
+				<p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
+		            <f:selectItem itemLabel=" - " itemValue="-" itemDisabled="true"/>
+		            <f:selectItem itemLabel="Mr " itemValue="M" />
+		            <f:selectItem itemLabel="Mme" itemValue="F" />
+		        </p:selectOneMenu>
+			
+				<h:outputLabel for="name">Nom:</h:outputLabel>
+				<h:inputText id="name" value="#{userControl.user.name}" required="true" a:autofocus="true"
+					requiredMessage="Encodez le nom du relais" maxlength="30"></h:inputText>
+				
+				<h:outputLabel for="firstname">Prénom:</h:outputLabel>
+				<h:inputText id="firstname" value="#{userControl.user.firstname}" required="true" 
+					requiredMessage="Encodez le prénom du relais" maxlength="30">
+					<f:validator validatorId="emailValidator" /> <!-- custom validator class (from util) -->
+				</h:inputText>
+				
+				<h:outputLabel for="password">Mot de passe:</h:outputLabel>
+				<h:inputSecret id="password" value="#{userControl.user.password}"
+					required="true" requiredMessage="Encodez un mot de passe de connexion"
+					validatorMessage="Le mot de passe doit contenir au moins une minuscule, 
+						un caractère en majuscule, un nombre et la longueur doit être entre 6 et 20 caractères">
+					<f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20})" /> <!-- expression régulière -->
+				</h:inputSecret>
+				
+				<h:commandButton action="#{userControl.doAdd}" value="Ajouter"/>
+				
+			</h:panelGrid>
+				
+		</h:form>
+		
+	</h:body>
+</html>

@@ -1,34 +1,37 @@
 package be.helha.aemt.entities;
 
 import java.io.Serializable;
-import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="groupuser")
 public class GroupUser implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private String name;
 	
-	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-	private List<Users> users;
+	@Column(name="groupname", nullable=false, length=32)
+	private String groupname; //stockage des différents rôles : admin - relais
+	
+	@Column(name="mail", nullable=false, length=255)
+	private String mail;
+	
+	public static final String RELAY_GROUP = "relay", ADMIN_GROUP = "admin";
 
 	public GroupUser() {
 		
 	}
 	
-	public GroupUser(String name, List<Users> users) {
-		this.name = name;
-		this.users = users;
+	public GroupUser(String name, String email) {
+		this.groupname = name;
+		this.mail = email;
 	}
 
 	public Long getId() {
@@ -40,20 +43,19 @@ public class GroupUser implements Serializable {
 	}
 
 	public String getName() {
-		return this.name;
+		return this.groupname;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.groupname = name;
 	}
 
-	public List<Users> getUsers() {
-		return this.users;
+	public String getMail() {
+		return this.mail;
 	}
 
-	public void setUsers(List<Users> users) {
-		this.users = users;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
-	
 	
 }

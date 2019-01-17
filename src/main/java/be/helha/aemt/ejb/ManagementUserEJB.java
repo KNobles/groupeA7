@@ -19,31 +19,29 @@ public class ManagementUserEJB implements IManagementUserEJB{
 	@Override
 	public List<Users> selectAll() {
 		// TODO Auto-generated method stub
-		return dao.selectAll();
+		return this.dao.selectAll();
 	}
 
 	@Override
 	public Users add(Users d) {
-		// TODO Auto-generated method stub
-		return dao.add(d);
+		return this.dao.add(d);
 	}
 
 	@Override
 	public Users selectId(String id) {
 		// TODO Auto-generated method stub
-		return dao.selectId(id);
+		return this.dao.selectId(id);
 	}
 
 	@Override
 	public Users update(Users d) {
 		// TODO Auto-generated method stub
-		return dao.update(d);
+		return this.dao.update(d);
 	}
 
 	@Override
 	public void delete(Users d) {
 		// TODO Auto-generated method stub
-		dao.delete(d);
+		this.dao.delete(d);
 	}
-
 }

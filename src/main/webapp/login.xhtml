@@ -4,11 +4,12 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      
     <h:head>
         <title>Connexion</title>
       	<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/images/favicon.ico"/>
-      	<h:outputStylesheet library="css" name="bootstrap.min.css"/>
-      	<h:outputStylesheet library="css" name="customStyle.css"/>
+      	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+      	<h:outputStylesheet library="css" name="customStyle.css"></h:outputStylesheet>
     </h:head>
     
     <h:body>
@@ -17,10 +18,10 @@
 	            <form method="POST" action="j_security_check">
 		            <h:panelGrid columns="2">
 		            	<h:outputLabel for="username">Identifiant :</h:outputLabel>
-		            	<h:inputText name="j_username" id="username" value="#{userControl.user.mail}" a:autofocus="true" required="true" class="p-1 my-1"/>
+		            	<h:inputText name="j_username" id="username" value="#{userControl.user.mail}" a:autofocus="true" a:required="true" class="p-1 my-1"/>
 		            	
 		            	<h:outputLabel for="password">Mot de passe:</h:outputLabel>
-		            	<h:inputSecret name="j_password" id="password" value="#{userControl.user.password}" required="true" class="p-1"/>
+		            	<h:inputSecret name="j_password" id="password" value="#{userControl.user.password}" a:required="true" class="p-1"/>
 		            </h:panelGrid>
 		            <hr class="my-2"/>
 	                <input type="reset" value="Réinitialiser le formulaire" class="btn btn-outline-secondary mr-1"/>                

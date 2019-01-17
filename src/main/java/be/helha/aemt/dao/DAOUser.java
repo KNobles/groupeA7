@@ -1,13 +1,17 @@
 package be.helha.aemt.dao;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import be.helha.aemt.entities.GroupUser;
 import be.helha.aemt.entities.Users;
+import be.helha.aemt.util.AuthenticationUtils;
 
 @Stateless
 public class DAOUser {
@@ -20,7 +24,21 @@ public class DAOUser {
 	}
 	
 	public Users add(Users u) {
-		this.em.persist(u);
+		try {
+			u.setPassword(AuthenticationUtils.encodeSHA256(u.getPassword())); //cryptage du mot de passe
+		} catch (Exception e) {
+			Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
+			e.printStackTrace();
+		}
+		
+		u.setMail(); //le mail se crée sur base du nom - prénom encodés dans le formulaire
+		
+		GroupUser group = new GroupUser();
+		group.setMail(u.getMail());
+		group.setName(GroupUser.RELAY_GROUP);
+		
+		this.em.persist(u); //l'utilisateur est persisté dans la base de données
+		this.em.persist(group); //le groupe est persisté dans la base de données
 		return u;
 	}
 	
