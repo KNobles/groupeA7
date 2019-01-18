@@ -7,9 +7,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import be.helha.aemt.entities.GroupUser;
 import be.helha.aemt.entities.Report;
 import be.helha.aemt.entities.Section;
 import be.helha.aemt.entities.Student;
+import be.helha.aemt.entities.Users;
 
 public class MainDataCreation {
 	
@@ -21,16 +23,20 @@ public class MainDataCreation {
 		Student s3 = new  Student("Buscato", "Bastien", "Group", true, true, sec, new ArrayList<Report>());
 		Student s4 = new  Student("Detienne", "Arnaud", "Group", true, true, sec, new ArrayList<Report>());
 
-		
+		GroupUser relay = new GroupUser("relay", "user@helha.be");
+		Users userTest = new Users(relay, "username", "userfirstname", "helha", 'f', new ArrayList<Section>());
 		
 		System.out.println(s.toString());
-		
+		System.out.println(userTest.getIdUser() + " " + userTest.toString()+ ", " + userTest.getFirstname()); //pas d'identifiant car pas de persistance
 		
 		EntityManagerFactory emf=Persistence.createEntityManagerFactory("groupeA7");
 		EntityManager em=emf.createEntityManager();
 		EntityTransaction tx= em.getTransaction();
 		
 		tx.begin();
+		
+		em.persist(relay);
+		em.persist(userTest);
 		em.persist(sec);
 		em.persist(s);
 		em.persist(s1);
@@ -39,5 +45,8 @@ public class MainDataCreation {
 		em.persist(s4);
 		
 		tx.commit();
+		
+		System.out.println(userTest.getIdUser() + " " + userTest + ", " + userTest.getFirstname()); //s'il a acquis un identifiant, alors il a été persisté
+
 	}
 }	

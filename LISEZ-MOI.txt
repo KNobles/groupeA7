@@ -1,0 +1,2 @@
+La connexion basique a été implémentée car la sécurité JAAS n'a pas pu être totalement implémentée, 
+le code relatif a la sécurité JAAS est donc en commentaire.
