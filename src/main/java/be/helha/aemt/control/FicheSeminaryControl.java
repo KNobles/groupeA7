@@ -37,7 +37,7 @@ public class FicheSeminaryControl implements Serializable{
 	
 	public String buildSeminary(Seminary seminary) {		
 		this.seminary = seminary;
-		return "ficheseminaire.xhtml";
+		return "${pageContext.request.contextPath}/relay/ficheSeminary.xhtml";
 	}
 	
 	public Student doAddStudent() {
