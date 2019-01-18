@@ -12,33 +12,35 @@ import be.helha.aemt.entities.Student;
 
 @Stateless
 public class DAORemediation {
+	
 	@PersistenceContext(unitName="groupeA7JTA")
 	private EntityManager em;	
+	
 	public List<Remediation> selectAll (){
-		return em.createQuery("SELECT r FROM Remediation r").getResultList();
+		return this.em.createQuery("SELECT r FROM Remediation r", Remediation.class).getResultList();
 	}
 	
 	public Remediation add(Remediation r) {
-		em.persist(r);
+		this.em.persist(r);
 		return r;
 	}
 	
 	public Remediation selectId(long id) {
 		Query query;
 		String sSelectId="SELECT r FROM Remediation r WHERE r.idRemediation=?1";
-		query=em.createQuery(sSelectId);
+		query=this.em.createQuery(sSelectId);
 		query.setParameter(1,id);
 		Remediation r =(Remediation) query.getSingleResult();
-		em.clear();
+		this.em.clear();
 		return r;	
 	}
 	
 	public List<Student> selectAllStudents() {
-		return em.createQuery("SELECT r.students FROM Remediation r JOIN r.students s").getResultList();
+		return this.em.createQuery("SELECT r.students FROM Remediation r JOIN r.students s", Student.class).getResultList();
 	}
 	
 	public Remediation updateRemediation(Remediation r) {
-		return em.merge(r);
+		return this.em.merge(r);
 	}
 	
 	//Delete

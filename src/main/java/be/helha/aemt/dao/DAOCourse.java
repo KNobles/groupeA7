@@ -16,18 +16,18 @@ public class DAOCourse {
 	private EntityManager em;
 	
 	public List<Course> selectAll(){
-		return em.createQuery("SELECT c FROM Course c").getResultList();
+		return this.em.createQuery("SELECT c FROM Course c", Course.class).getResultList();
 	}
 	
 	public Course add(Course c) {
-		em.persist(c);
+		this.em.persist(c);
 		return c;
 	}
 	
 	public List<Course> selectBySection(String sectionCode){
 		Query query;
 		String sSelect = "Select c FROM Course c JOIN c.sections s WHERE s.code =?1";
-		query=em.createQuery(sSelect);
+		query=this.em.createQuery(sSelect);
 		query.setParameter(1, sectionCode);
 		return query.getResultList();
 	}
@@ -35,16 +35,16 @@ public class DAOCourse {
 	public Course selectId(String id) {
 		Query query;
 		String sSelect="SELECT c FROM Course c WHERE c.code=?1";
-		query=em.createQuery(sSelect);
+		query=this.em.createQuery(sSelect);
 		query.setParameter(1, id);
 		Course c = (Course)query.getSingleResult();
-		em.clear();
+		this.em.clear();
 		return c;
 	}
 	
 	//Update
 	public Course updateCourse(Course c) {
-		return em.merge(c);
+		return this.em.merge(c);
 	}
 	
 	//Delete

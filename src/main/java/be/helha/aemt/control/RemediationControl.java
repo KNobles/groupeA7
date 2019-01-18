@@ -14,16 +14,17 @@ import be.helha.aemt.entities.Student;
 @Named
 @RequestScoped
 public class RemediationControl implements Serializable {
+	
 	@EJB
 	private ManagementRemediationEJB bean;
 	private Remediation remediation = new Remediation();
 	
 	public List<Remediation> doSelectAll(){
-		return bean.selectAll();
+		return this.bean.selectAll();
 	}
 	
 	public ManagementRemediationEJB getBean() {
-		return bean;
+		return this.bean;
 	}
 	
 	public void setBean(ManagementRemediationEJB bean) {
@@ -31,7 +32,7 @@ public class RemediationControl implements Serializable {
 	}
 	
 	 public Remediation getRemediation() {
-		 return remediation;
+		 return this.remediation;
 	 }
 	 
 	 public void setRemediation(Remediation remediation) {
@@ -39,7 +40,7 @@ public class RemediationControl implements Serializable {
 	 }
 	 
 	 public List<Student> selectAllStudents() {
-		 return bean.selectAllStudents();
+		 return this.bean.selectAllStudents();
 	 }
 	 
 }

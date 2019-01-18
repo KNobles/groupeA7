@@ -15,26 +15,26 @@ public class DAOInterview {
 	@PersistenceContext(unitName="groupeA7JTA")
 	private EntityManager em;	
 	public List<Interview> selectAll (){
-		return em.createQuery("SELECT i FROM Interview i").getResultList();
+		return this.em.createQuery("SELECT i FROM Interview i", Interview.class).getResultList();
 	}
 	
 	public Interview add(Interview i) {
-		em.persist(i);
+		this.em.persist(i);
 		return i;
 	}
 	
 	public Interview selectId(Long id) {
 		Query query;
 		String sSelectId="SELECT i FROM Interview i WHERE i.idInterview=?1";
-		query=em.createQuery(sSelectId);
+		query=this.em.createQuery(sSelectId);
 		query.setParameter(1,id);
 		Interview i =(Interview) query.getSingleResult();
-		em.clear();
+		this.em.clear();
 		return i;	
 	}
 	
 	public Interview updateInterview(Interview i) {
-		return em.merge(i);
+		return this.em.merge(i);
 	}
 	
 	//Delete

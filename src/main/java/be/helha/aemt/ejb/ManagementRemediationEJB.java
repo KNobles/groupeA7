@@ -24,32 +24,32 @@ public class ManagementRemediationEJB implements IManagementRemediationEJB{
 	
 	@Override
 	public List<Remediation> selectAll() {
-		return daoRemediation.selectAll();
+		return this.daoRemediation.selectAll();
 	}
 	
 	@Override
 	public Remediation selectId(Long id) {
-		return daoRemediation.selectId(id);
+		return this.daoRemediation.selectId(id);
 	}
 
 	@Override
 	public Remediation add(Remediation r) {
-		return daoRemediation.add(r);
+		return this.daoRemediation.add(r);
 	}
 
 	@Override
 	public Remediation updateAdmin(Remediation r) {
-		return daoRemediation.updateRemediation(r);
+		return this.daoRemediation.updateRemediation(r);
 	}
 
 	@Override
 	public void deleteAllRemediation(Remediation r) {
-		daoRemediation.deleteAllRemediations(r);
+		this.daoRemediation.deleteAllRemediations(r);
 	}
 
 	@Override
 	public List<Student> selectAllStudents() {
-		return daoRemediation.selectAllStudents();
+		return this.daoRemediation.selectAllStudents();
 	}
 
 }

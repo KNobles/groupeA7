@@ -1,6 +1,5 @@
 package be.helha.aemt.control;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -19,14 +18,14 @@ public class CourseControl {
 	Course course;
 	
 	public List<Course> doSelectAll(){
-		return bean.selectAll();
+		return this.bean.selectAll();
 	}
 
 	public List<Course> doSelectBySection(String sectionCode){
-		return bean.selectBySection(sectionCode);
+		return this.bean.selectBySection(sectionCode);
 	}
 	
 	public Course doAdd(Course c) {
-		return bean.add(c);
+		return this.bean.add(c);
 	}
 }

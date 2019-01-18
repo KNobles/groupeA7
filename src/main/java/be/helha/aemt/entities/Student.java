@@ -149,7 +149,7 @@ public class Student {
 
 	public List<Report> getReports() {
 		List<Report> results = new ArrayList<>();
-		for(Report r : reports) {
+		for(Report r : this.reports) {
 			results.add(r);
 		}
 		return results;

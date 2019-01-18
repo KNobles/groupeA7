@@ -3,95 +3,98 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
-<h:head>
-	<title>Etudiants</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</h:head>
-<h:body>
-	<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-	<h:outputScript library="js" name="bootstrap.min.js"></h:outputScript>
-
-	<ui:include src="../navbar.xhtml" />
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+      
+	<h:head>
+		<title>Étudiants</title>
+		<link rel="shortcut icon" type="image/x-icon" href="#{request.contextPath}/resources/images/favicon.ico"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	</h:head>
 	
-	<table id="table" class="table table-hover table-striped"
-		style="table-layout: fixed;" data-toggle="table"
-			 data-search="true"
-			 data-filter-control="true">
-		<thead class="thead-dark">
-			<tr>
-				<th data-field="Nom" data-filter-control="input" data-sortable="true">Nom</th>
-				<th data-field="Prénom">Prénom</th>
-				<th data-field="Classe">Classe</th>
-				<th data-field="Informations">Informations</th>
-			</tr>
-		</thead>
-		<tbody>
-			<ui:repeat value="#{studentControl.doSelectAll()}" var="student"
-				varStatus="loop">
-				
+	<h:body>
+		<h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
+		<h:outputScript library="js" name="bootstrap.min.js"></h:outputScript>
+	
+		<ui:include src="../navbar.xhtml" />
+		
+		<table id="table" class="table table-hover table-striped"
+			style="table-layout: fixed;" data-toggle="table" data-search="true" data-filter-control="true">
+			
+			<thead class="thead-dark">
 				<tr>
-					<td>#{student.name}</td>
-					<td>#{student.firstname}</td>
-					<td>#{student.classCode}</td>
-					<td>
-						<button class="btn btn-primary" type="button"
-							data-toggle="collapse" data-target="##{student.idStudent}"
-							aria-expanded="false">Afficher plus</button>
-					</td>
+					<th data-field="Nom" data-filter-control="input" data-sortable="true">Nom</th>
+					<th data-field="Prénom">Prénom</th>
+					<th data-field="Classe">Classe</th>
+					<th data-field="Informations">Informations</th>
 				</tr>
-				<tr>
-					<td>
-						<div class="collapse" id="#{student.idStudent}">
-							<div class="well">
-
-								<table class="table table-bordered" style="">
-									<thead>
-										<tr>
-											<th scope="col">Section</th>
-											<th scope="col">Présence Séminaires</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>#{studentControl.doGetSection(student.idStudent)}</td>										
-											<td>#{seminaryControl.doSelectCount(student.idStudent)}</td>
-										</tr>
-									</tbody>
-
-								</table>
-								
-								<table class="table table-bordered" style="">
-									<thead>
-										<tr>
-											<th scope="col">Auteur</th>
-											<th scope="col">Date</th>
-											<th scope="col">Note</th>
-										</tr>
-									</thead>
-									<tbody>
-										<ui:repeat value="#{studentControl.doSelectReport(student.idStudent)}" var="report">
-										<tr>
-											<td>#{report.author.name} #{report.author.firstname}</td>										
-											<td>#{report.date}</td>
-											<td>#{report.note}</td>
-										</tr>
-										</ui:repeat>
-									</tbody>
-
-								</table>
-
+			</thead>
+			
+			<tbody>
+				<ui:repeat value="#{studentControl.doSelectAll()}" var="student"
+					varStatus="loop">
+					
+					<tr>
+						<td>#{student.name}</td>
+						<td>#{student.firstname}</td>
+						<td>#{student.classCode}</td>
+						<td>
+							<button class="btn btn-primary" type="button"
+								data-toggle="collapse" data-target="##{student.idStudent}"
+								aria-expanded="false">Afficher plus</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="collapse" id="#{student.idStudent}">
+								<div class="well">
+	
+									<table class="table table-bordered" style="">
+										<thead>
+											<tr>
+												<th scope="col">Section</th>
+												<th scope="col">Présence Séminaires</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>#{studentControl.doGetSection(student.idStudent)}</td>										
+												<td>#{seminaryControl.doSelectCount(student.idStudent)}</td>
+											</tr>
+										</tbody>
+	
+									</table>
+									
+									<table class="table table-bordered" style="">
+										<thead>
+											<tr>
+												<th scope="col">Auteur</th>
+												<th scope="col">Date</th>
+												<th scope="col">Note</th>
+											</tr>
+										</thead>
+										<tbody>
+											<ui:repeat value="#{studentControl.doSelectReport(student.idStudent)}" var="report">
+											<tr>
+												<td>#{report.author.name} #{report.author.firstname}</td>										
+												<td>#{report.date}</td>
+												<td>#{report.note}</td>
+											</tr>
+											</ui:repeat>
+										</tbody>
+	
+									</table>
+	
+								</div>
 							</div>
-						</div>
-					</td>
-				</tr>
-
-			</ui:repeat>
-
-		</tbody>
-	</table> 
-</h:body>
+						</td>
+					</tr>
+	
+				</ui:repeat>
+	
+			</tbody>
+		</table> 
+	</h:body>
 
 </html>

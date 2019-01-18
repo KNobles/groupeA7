@@ -16,27 +16,27 @@ public class ManagementSectionEJB implements IManagementSectionEJB {
 	
 	@Override
 	public List<Section> selectAll() {
-		return daoSection.selectAll();
+		return this.daoSection.selectAll();
 	}
 
 	@Override
 	public Section add(Section s) {
-		return daoSection.add(s);
+		return this.daoSection.add(s);
 	}
 
 	@Override
 	public Section selectId(long id) {
-		return daoSection.selectId(id);
+		return this.daoSection.selectId(id);
 	}
 
 	@Override
 	public Section update(Section s) {
-		return daoSection.updateSection(s);
+		return this.daoSection.updateSection(s);
 	}
 
 	@Override
 	public void delete(Section s) {
-		daoSection.deleteSection(s);
+		this.daoSection.deleteSection(s);
 		
 	}
 

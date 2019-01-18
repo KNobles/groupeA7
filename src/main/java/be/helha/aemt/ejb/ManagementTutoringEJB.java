@@ -18,33 +18,33 @@ public class ManagementTutoringEJB implements IManagementTutoringEJB {
 	
 	@Override
 	public List<Tutoring> selectAll() {
-		return daoTutoring.selectAll();
+		return this.daoTutoring.selectAll();
 	}
 
 	@Override
 	public Tutoring add(Tutoring t) {
-		return daoTutoring.add(t);
+		return this.daoTutoring.add(t);
 	}
 
 	@Override
 	public Tutoring selectId(Long id) {
-		return daoTutoring.selectId(id);
+		return this.daoTutoring.selectId(id);
 	}
 
 	@Override
 	public Tutoring update(Tutoring t) {
-		return daoTutoring.updateTutoring(t);
+		return this.daoTutoring.updateTutoring(t);
 	}
 
 	@Override
 	public void delete(Tutoring t) {
-		daoTutoring.deleteTutoring(t);
+		this.daoTutoring.deleteTutoring(t);
 		
 	}
 
 	@Override
 	public String selectDemand(Long idStudent) {
-		return daoTutoring.selectDemand(idStudent);
+		return this.daoTutoring.selectDemand(idStudent);
 	}
 	
 }

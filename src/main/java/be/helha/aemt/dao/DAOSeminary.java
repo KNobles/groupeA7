@@ -17,13 +17,13 @@ public class DAOSeminary {
 	private EntityManager em;
 	
 	public List<Seminary> selectAll(){
-		return em.createQuery("SELECT s FROM Seminary s").getResultList();
+		return this.em.createQuery("SELECT s FROM Seminary s", Seminary.class).getResultList();
 	}
 	
 	public String select(Long idStudent, Long idSeminary) {
 		String sSelect="SELECT s FROM Seminary s  JOIN s.students sem WHERE sem.idStudent =?1 AND s.idSeminary=?2";
 
-		Query query = em.createQuery(sSelect);
+		Query query = this.em.createQuery(sSelect);
 		query.setParameter(1, idStudent);
 		query.setParameter(2, idSeminary);
 		try {
@@ -37,7 +37,7 @@ public class DAOSeminary {
 	
 	public Long selectCount(Long idStudent) {
 		String sSelect="SELECT count(s) FROM Seminary s JOIN s.students st WHERE st.idStudent =?1";
-		Query query = em.createQuery(sSelect);
+		Query query = this.em.createQuery(sSelect);
 		query.setParameter(1, idStudent);
 		try {
 			return (Long)query.getSingleResult();
@@ -47,29 +47,29 @@ public class DAOSeminary {
 	}
 	
 	public Seminary add(Seminary s) {
-		em.persist(s);
+		this.em.persist(s);
 		return s;
 	}
 	
 	public Seminary selectId(Long id) {
 		Query query;
 		String sSelect="SELECT s FROM Seminary s WHERE s.idSeminary=?1";
-		query=em.createQuery(sSelect);
+		query=this.em.createQuery(sSelect);
 		query.setParameter(1, id);
 		Seminary s = (Seminary)query.getSingleResult();
-		em.clear();
+		this.em.clear();
 		return s;
 	}
 	
 	//Update
-		public Seminary updateSeminary(Seminary s) {
-			return em.merge(s);
-		}
-		
-		//Delete
-		public void deleteSeminary(Seminary s) {
-			Query query = this.em.createQuery("DELETE s FROM Seminary s WHERE idSeminary =?1");
-			query.setParameter(1, s.getIdSeminary());
-			query.executeUpdate();
-		}
+	public Seminary updateSeminary(Seminary s) {
+		return this.em.merge(s);
+	}
+	
+	//Delete
+	public void deleteSeminary(Seminary s) {
+		Query query = this.em.createQuery("DELETE s FROM Seminary s WHERE idSeminary =?1");
+		query.setParameter(1, s.getIdSeminary());
+		query.executeUpdate();
+	}
 }

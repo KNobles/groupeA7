@@ -28,7 +28,7 @@ public class FicheSeminaryControl implements Serializable{
 	private Seminary seminary;
 
 	public Seminary getSeminary() {
-		return seminary;
+		return this.seminary;
 	}
 
 	public void setSeminary(Seminary seminary) {
@@ -44,11 +44,11 @@ public class FicheSeminaryControl implements Serializable{
 		Student student;
 		try {
 			
-			student = bean.selectByName(name, firstname);
+			student = this.bean.selectByName(this.name, this.firstname);
 			
-			seminary.initStudents();
-			seminary.addStudent(student);
-			beanSem.update(seminary);
+			this.seminary.initStudents();
+			this.seminary.addStudent(student);
+			this.beanSem.update(this.seminary);
 			
 			return null;
 		} catch(NoResultException e) {
@@ -58,7 +58,7 @@ public class FicheSeminaryControl implements Serializable{
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -66,15 +66,11 @@ public class FicheSeminaryControl implements Serializable{
 	}
 
 	public String getFirstname() {
-		return firstname;
+		return this.firstname;
 	}
 
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-
-	
-	
-	
 
 }

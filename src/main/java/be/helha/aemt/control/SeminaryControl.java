@@ -21,30 +21,30 @@ public class SeminaryControl {
 	private int n;
 	
 	public List<Seminary> doSelectAll(){
-		List<Seminary> list = bean.selectAll();
-		n = list.size();
-		nPresent=0;
+		List<Seminary> list = this.bean.selectAll();
+		this.n = list.size();
+		this.nPresent=0;
 		return list;
 	}
 	
 	public Seminary doAdd() {
 		System.out.println("do add");
-		return bean.add(seminary);
+		return this.bean.add(this.seminary);
 	}
 	
 	public String select(long idStudent, long idSeminary) {
-		String result = bean.select(idStudent, idSeminary);
+		String result = this.bean.select(idStudent, idSeminary);
 		if(result.equals("Présent"))
-			nPresent++;
+			this.nPresent++;
 		return result;
 	}
 	
 	public Long doSelectCount(long idStudent) {
-		return bean.selectCount(idStudent);
+		return this.bean.selectCount(idStudent);
 	}
 
 	public ManagementSeminaryEJB getBean() {
-		return bean;
+		return this.bean;
 	}
 
 	public void setBean(ManagementSeminaryEJB bean) {
@@ -52,7 +52,7 @@ public class SeminaryControl {
 	}
 
 	public Seminary getSeminary() {
-		return seminary;
+		return this.seminary;
 	}
 
 	public void setSeminary(Seminary seminary) {
@@ -60,7 +60,7 @@ public class SeminaryControl {
 	}
 
 	public int getnPresent() {
-		return nPresent;
+		return this.nPresent;
 	}
 
 	public void setnPresent(int nPresent) {
@@ -68,17 +68,11 @@ public class SeminaryControl {
 	}
 
 	public int getN() {
-		return n;
+		return this.n;
 	}
 
 	public void setN(int n) {
 		this.n = n;
 	}
-	
-	
-	
-	
-	
-	
 
 }

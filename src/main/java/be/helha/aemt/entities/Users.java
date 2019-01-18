@@ -34,7 +34,7 @@ public class Users implements Serializable {
 	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	private List<Section> sections; //la section dont le directeur ou le relais est responsable mais un relais peut intervenir dans plusieurs sections
 	
-	@Column(name="name", nullable=false, length=30)
+	@Column(name="name", nullable=false, length=30) //validation du format des données depuis le modèle, via des annotations sur les propriétés des entités
 	private String name;
 	
 	@Column(name="firstname", nullable=false, length=30)

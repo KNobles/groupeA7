@@ -93,8 +93,8 @@ public class Seminary {
 	}
 	
 	public void initStudents() {
-		if(students == null)
-			students=new ArrayList<>();
+		if(this.students == null)
+			this.students=new ArrayList<>();
 	}
 
 	/**
@@ -146,8 +146,8 @@ public class Seminary {
 	}
 
 	public void addStudent(Student student) {
-		if(!students.contains(student)) {
-			students.add(student);
+		if(!this.students.contains(student)) {
+			this.students.add(student);
 		}
 		
 	}

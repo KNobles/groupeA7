@@ -15,11 +15,11 @@ public class SortableStudent<E> extends DataModel<E>{
 	}
 	
 	public void initRows(){
-		int rowCount = model.getRowCount();
+		int rowCount = this.model.getRowCount();
 		if(rowCount != -1){
 			this.rows = new Integer[rowCount];
 			for(int i = 0; i < rowCount; ++i){
-				rows[i] = i;
+				this.rows[i] = i;
 				
 			}
 		}
@@ -33,16 +33,16 @@ public class SortableStudent<E> extends DataModel<E>{
 				return comparator.compare(o1, o2);
 			}
 		};
-		Arrays.sort(rows, rowComp);
+		Arrays.sort(this.rows, rowComp);
 		
 	}
 	
 	private E getData(int row){
-		int originalRowIndex = model.getRowIndex();
+		int originalRowIndex = this.model.getRowIndex();
 		
-		model.setRowIndex(row);
-		E newRowData = model.getRowData();
-		model.setRowIndex(originalRowIndex);
+		this.model.setRowIndex(row);
+		E newRowData = this.model.getRowData();
+		this.model.setRowIndex(originalRowIndex);
 		
 		return newRowData;
 	}
@@ -50,42 +50,42 @@ public class SortableStudent<E> extends DataModel<E>{
 	@Override
 	public void setRowIndex(int rowIndex) {
 
-		if(0 <= rowIndex && rowIndex < rows.length){
-			model.setRowIndex(rows[rowIndex]);
+		if(0 <= rowIndex && rowIndex < this.rows.length){
+			this.model.setRowIndex(this.rows[rowIndex]);
 		}else{
-			model.setRowIndex(rowIndex);
+			this.model.setRowIndex(rowIndex);
 		}
 	}
 	
 	@Override
 	public boolean isRowAvailable() {
-		return model.isRowAvailable();
+		return this.model.isRowAvailable();
 	}
 
 	@Override
 	public int getRowCount() {
-		return model.getRowCount();
+		return this.model.getRowCount();
 	}
 
 	@Override
 	public E getRowData() {
-		return model.getRowData();
+		return this.model.getRowData();
 	}
 
 	@Override
 	public int getRowIndex() {
-		return model.getRowIndex();
+		return this.model.getRowIndex();
 	}
 
 	@Override
 	public Object getWrappedData() {
-		return model.getWrappedData();
+		return this.model.getWrappedData();
 	}
 
 	@Override
 	public void setWrappedData(Object data) {
 		
-		model.setWrappedData(data);
+		this.model.setWrappedData(data);
 		initRows();
 		
 	}

@@ -10,6 +10,12 @@ import be.helha.aemt.ejb.ManagementTutoringEJB;
 import be.helha.aemt.entities.Tutoring;
 
 @RequestScoped
+/**
+ * permet de préciser au serveur que ce bean a pour portée la requête. 
+ * Il s'agit en l’occurrence de la portée utilisée par défaut en cas d'absence d'annotation. 
+ * Ainsi, si vous omettez de l'écrire, le bean sera de toute manière placé dans la portée requête. 
+ * C'est toutefois une bonne pratique de toujours écrire cette annotation, afin de clarifier le code.  *
+ */
 @Named
 public class TutoringControl {
 	
@@ -18,11 +24,11 @@ public class TutoringControl {
 	Tutoring tutoring;
 	
 	public List<Tutoring> doSelectAll(){
-		return bean.selectAll();
+		return this.bean.selectAll();
 	}
 	
 	public String selectDemand(Long idStudent) {
-		return bean.selectDemand(idStudent);
+		return this.bean.selectDemand(idStudent);
 	}
 
 }

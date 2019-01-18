@@ -1,13 +1,10 @@
 package be.helha.aemt.ejb;
 
-import java.util.Comparator;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-import javax.persistence.criteria.Order;
-
 import be.helha.aemt.dao.DAOStudent;
 import be.helha.aemt.entities.Student;
 
@@ -21,7 +18,7 @@ public class ManagementStudentEJB implements IManagementStudentEJB{
 	@Override
 	public List<Student> selectAll() {
 		// TODO Auto-generated method stub
-		return dao.selectAll();
+		return this.dao.selectAll();
 	}
 
 	@Override
@@ -29,39 +26,47 @@ public class ManagementStudentEJB implements IManagementStudentEJB{
 		// TODO Auto-generated method stub
 
 
-		return dao.add(s);
+		return this.dao.add(s);
 	}
 
 	@Override
 	public Student selectId(Long id) {
 		// TODO Auto-generated method stub
-		return dao.selectId(id);
+		return this.dao.selectId(id);
 	}
 
 	@Override
 	public Student update(Student s) {
 		// TODO Auto-generated method stub
-		return dao.updateStudent(s);
+		return this.dao.updateStudent(s);
 	}
 
 	@Override
 	public void delete(Student s) {
 		// TODO Auto-generated method stub
-		dao.deleteStudent(s);
+		this.dao.deleteStudent(s);
 	}
 
 	
 
 	public List<Student> selectBySection(String section) {
-		return dao.selectBySection(section);
+		return this.dao.selectBySection(section);
 	}
 
 	public Student selectByName(String name, String firstname) {
-		return dao.selectByName(name, firstname);
+		return this.dao.selectByName(name, firstname);
 	}
 	
 	public String getSection(Long idStudent) {
-		return dao.getSection(idStudent);
+		return this.dao.getSection(idStudent);
+	}
+
+	public boolean isSortAscending() {
+		return this.sortAscending;
+	}
+
+	public void setSortAscending(boolean sortAscending) {
+		this.sortAscending = sortAscending;
 	}
 	
 

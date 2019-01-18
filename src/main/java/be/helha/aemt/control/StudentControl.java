@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -32,7 +31,7 @@ public class StudentControl implements Serializable{
 	private String name;
 	
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public void setName(String name) {
@@ -43,14 +42,14 @@ public class StudentControl implements Serializable{
 	
 	private Part file; // +getter+setter
 	public void save() {
-	        File cFile = new File(file.getSubmittedFileName());
+	        File cFile = new File(this.file.getSubmittedFileName());
 	        try {
 	            cFile.createNewFile();
 	        } catch (IOException e1) {
 	            // TODO Auto-generated catch block
 	            e1.printStackTrace();
 	        }
-	        try (InputStream input = file.getInputStream()) {
+	        try (InputStream input = this.file.getInputStream()) {
 	            Files.copy(input, cFile.toPath(),StandardCopyOption.REPLACE_EXISTING);
 	        }
 	        catch (IOException e) {
@@ -58,7 +57,7 @@ public class StudentControl implements Serializable{
 	        }
 	        
 	        try {
-				students = StudentReader.getStudents(cFile);
+				this.students = StudentReader.getStudents(cFile);
 			} catch (InvalidFormatException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -67,18 +66,18 @@ public class StudentControl implements Serializable{
 				e.printStackTrace();
 			}
 	        
-	        for(Student s: students) {
-	        	bean.add(s);
+	        for(Student s: this.students) {
+	        	this.bean.add(s);
 	        }
 
 	}
 	
 	public List<Student> doSelectBySection(String section) {
-		return bean.selectBySection(section);
+		return this.bean.selectBySection(section);
 	}
 	
 	public Part getFile() {
-		return file;
+		return this.file;
 	}
 
 	public void setFile(Part file) {
@@ -86,12 +85,12 @@ public class StudentControl implements Serializable{
 	}
 
 	public List<Student> doSelectAll(){
-		return bean.selectAll();
+		return this.bean.selectAll();
 	}
 	
 	
 	public ManagementStudentEJB getBean() {
-		return bean;
+		return this.bean;
 	}
 	
 	public void setBean(ManagementStudentEJB bean) {
@@ -99,7 +98,7 @@ public class StudentControl implements Serializable{
 	}
 	
 	 public Student getStudent() {
-		 return student;
+		 return this.student;
 	 }
 	 
 	 public void setStudent(Student student) {
@@ -107,18 +106,17 @@ public class StudentControl implements Serializable{
 	 }
 	 
 	 public String doAdd() {
-		 bean.add(student);
+		 this.bean.add(this.student);
 		 return "liste.xhtml";
 	 }
 	 
 	 public String doGetSection(Long idStudent) {
-		 return bean.getSection(idStudent);
+		 return this.bean.getSection(idStudent);
 	 }
 	 
 	 public List<Report> doSelectReport(Long idStudent){
-		 Student student = bean.selectId(idStudent);
+		 Student student = this.bean.selectId(idStudent);
 		 return student.getReports();
 	 }
 
-	
 }

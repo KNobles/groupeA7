@@ -18,32 +18,32 @@ public class ManagementCourseEJB implements IManagementCourseEJB {
 	
 	@Override
 	public List<Course> selectAll() {
-		return daoCourse.selectAll();
+		return this.daoCourse.selectAll();
 	}
 
 	@Override
 	public Course add(Course c) {
-		return daoCourse.add(c);
+		return this.daoCourse.add(c);
 	}
 
 	@Override
 	public Course selectId(String id) {
-		return daoCourse.selectId(id);
+		return this.daoCourse.selectId(id);
 	}
 
 	@Override
 	public Course update(Course c) {
-		return daoCourse.updateCourse(c);
+		return this.daoCourse.updateCourse(c);
 	}
 
 	@Override
 	public void delete(Course c) {
-		daoCourse.deleteCourse(c);
+		this.daoCourse.deleteCourse(c);
 	}
 
 	@Override
 	public List<Course> selectBySection(String sectionCode) {
-		return daoCourse.selectBySection(sectionCode);
+		return this.daoCourse.selectBySection(sectionCode);
 	}
 
 	

@@ -14,26 +14,26 @@ public class DAOReport {
 	@PersistenceContext(unitName="groupeA7JTA")
 	private EntityManager em;	
 	public List<Report> selectAll (){
-		return em.createQuery("SELECT r FROM Report r").getResultList();
+		return this.em.createQuery("SELECT r FROM Report r", Report.class).getResultList();
 	}
 	
 	public Report add(Report r) {
-		em.persist(r);
+		this.em.persist(r);
 		return r;
 	}
 	
 	public Report selectId(Long id) {
 		Query query;
 		String sSelectId="SELECT r FROM Report r WHERE r.idReport=?1";
-		query=em.createQuery(sSelectId);
+		query=this.em.createQuery(sSelectId);
 		query.setParameter(1,id);
 		Report r =(Report) query.getSingleResult();
-		em.clear();
+		this.em.clear();
 		return r;	
 	}
 	
 	public Report updateReport(Report r) {
-		return em.merge(r);
+		return this.em.merge(r);
 	}
 	
 	//Delete

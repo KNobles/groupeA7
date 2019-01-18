@@ -23,7 +23,6 @@
 
 	<jta-data-source>jdbc/groupeA7</jta-data-source>
 	
-				<class>be.helha.aemt.entities.Coordinator</class>
 		<class>be.helha.aemt.entities.Course</class>
 		<class>be.helha.aemt.entities.GroupUser</class>
 		<class>be.helha.aemt.entities.Interview</class>

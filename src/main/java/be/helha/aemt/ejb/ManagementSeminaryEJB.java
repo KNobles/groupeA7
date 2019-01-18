@@ -18,36 +18,36 @@ public class ManagementSeminaryEJB implements IManagementSeminaryEJB{
 	
 	@Override
 	public List<Seminary> selectAll() {
-		return daoSeminary.selectAll();
+		return this.daoSeminary.selectAll();
 	}
 
 	@Override
 	public Seminary add(Seminary s) {
-		return daoSeminary.add(s);
+		return this.daoSeminary.add(s);
 	}
 
 	@Override
 	public Seminary selectId(Long id) {
-		return daoSeminary.selectId(id);
+		return this.daoSeminary.selectId(id);
 	}
 
 	@Override
 	public Seminary update(Seminary s) {
-		return daoSeminary.updateSeminary(s);
+		return this.daoSeminary.updateSeminary(s);
 	}
 
 	@Override
 	public void delete(Seminary s) {
-		daoSeminary.deleteSeminary(s);
+		this.daoSeminary.deleteSeminary(s);
 	}
 
 	@Override
 	public String select(Long idStudent, Long idSeminary) {
-		return daoSeminary.select(idStudent, idSeminary);
+		return this.daoSeminary.select(idStudent, idSeminary);
 	}
 	
 	public Long selectCount(Long idStudent) {
-		return daoSeminary.selectCount(idStudent);
+		return this.daoSeminary.selectCount(idStudent);
 	}
 
 }

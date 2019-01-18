@@ -6,6 +6,20 @@
 	version="4.0">
 	<display-name>groupeA7</display-name>
     
+    <!-- 
+	    Lors du développement d'une application, 
+	    il est recommandé d'initialiser le paramètre nommé javax.faces.PROJECT_STAGE avec la valeur "Development". 
+	    Ceci va rendre disponibles de nombreuses informations de debugging et les afficher directement au sein 
+	    de vos pages en cas de problème, permettant ainsi de tracer les erreurs rapidement. 
+	    Lors du déploiement final, une fois l'application achevée, 
+	    il suffit alors de changer la valeur du paramètre à "Production", 
+	    et toutes ces informations non destinées au public ne seront alors plus affichées. 
+	-->
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Production</param-value>
+	</context-param>
+	
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -27,7 +41,7 @@
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
 	
-	<!-- SÉCURITÉ -->
+	<!-- SÉCURITÉ JAAS-->
 	<login-config>
         <auth-method>FORM</auth-method>
         <realm-name>groupeA7Realm</realm-name> <!-- nom utilisé dans la configuration de payara dans le navigateur -->

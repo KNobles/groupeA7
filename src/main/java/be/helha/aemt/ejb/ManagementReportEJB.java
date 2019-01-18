@@ -16,27 +16,27 @@ public class ManagementReportEJB implements IManagementReportEJB {
 	
 	@Override
 	public List<Report> selectAll() {
-		return daoReport.selectAll();
+		return this.daoReport.selectAll();
 	}
 
 	@Override
 	public Report add(Report r) {
-		return daoReport.add(r);
+		return this.daoReport.add(r);
 	}
 
 	@Override
 	public Report selectId(Long id) {
-		return daoReport.selectId(id);
+		return this.daoReport.selectId(id);
 	}
 
 	@Override
 	public Report update(Report r) {
-		return daoReport.updateReport(r);
+		return this.daoReport.updateReport(r);
 	}
 
 	@Override
 	public void delete(Report r) {
-		daoReport.deleteAllReports(r);
+		this.daoReport.deleteAllReports(r);
 		
 	}
 
