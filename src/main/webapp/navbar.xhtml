@@ -8,7 +8,7 @@
 		<p:growl id="Menu"/>
 		
 		<p:menubar>
-			<p:menuitem value="Accueil" url="http://localhost:8080/groupeA7/index.xhtml"/>
+			<p:menuitem value="Accueil" url="${pageContext.request.contextPath}/index.xhtml"/>
 			
 			<p:submenu label="Sections">
 				<p:menuitem value="Catégorie économique"/>
@@ -18,9 +18,9 @@
 				<p:menuitem value="Informatique de gestion"/>
 			</p:submenu>
 			
-			<p:menuitem value="Séminaires" url="http://localhost:8080/groupeA7/seminaire.xhtml"/>
-			<p:menuitem value="Tutorats" url="http://localhost:8080/groupeA7/tutorat.xhtml"/>
-			<p:menuitem value="Étudiants" url="http://localhost:8080/groupeA7/relay/remediation.xhtml"/>
+			<p:menuitem value="Séminaires" url="${pageContext.request.contextPath}/seminaire.xhtml"/>
+			<p:menuitem value="Tutorats" url="${pageContext.request.contextPath}/tutorat.xhtml"/>
+			<p:menuitem value="Étudiants" url="${pageContext.request.contextPath}/relay/remediation.xhtml"/>
 			
 			<f:facet name = "options">
 				<p:commandButton value="À propos" type="button" action="#{about.showAbout()}"/>

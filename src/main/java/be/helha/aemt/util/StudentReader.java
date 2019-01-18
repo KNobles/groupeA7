@@ -19,26 +19,33 @@ public abstract class StudentReader {
 	private static Section it = new Section("Informatique de gestion", "IG");
 	private static List<Section> sections = new ArrayList<>();
 
+	/**
+	 * 
+	 * @param file = fichier où sont contenus les étudiants à récupérer
+	 * @return une liste d'étudiants issue du fichier placé en paramètre
+	 * @throws IOException en cas d'erreur de fichier
+	 * @throws InvalidFormatException en cas d'erreur de format
+	 */
 	public static List<Student> getStudents(File file) throws IOException, InvalidFormatException 
     {
 		sections.add(ad);
 		sections.add(ct);
 		sections.add(it);
-        List<Student> students = new ArrayList<>();
+        List<Student> students = new ArrayList<>(); //on crée la liste qu'on va renvoyer après la lecture du fichier
         Workbook workbook = WorkbookFactory.create(file);
         
         Sheet sheet = workbook.getSheetAt(0);
         
-        sheet.forEach(row -> {
-            if(row.getRowNum() > 0)
+        sheet.forEach(row -> { //on parcourt les lignes du fichier 
+            if(row.getRowNum() > 0) //tant qu'il y a des données
             {
-                students.add(new Student().loadFromRow(row, sections));
+                students.add(new Student().loadFromRow(row, sections)); //ajout à la liste des étudiants
             }
         });
 
-        workbook.close();
+        workbook.close(); //fermeture du flux
         
-        return students;
+        return students; //on renvoit la liste d'étudiants remplie par le contenu du fichier
     }
 }
 
