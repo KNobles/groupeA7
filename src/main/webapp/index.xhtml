@@ -11,11 +11,13 @@
 	</h:head>
 	
 	<h:body>
-		<ui:include src="navbar.xhtml" /> <!-- à garder seulement le temps des tests => SEULEMENT DISPO POUR LES UTILISATEURS CONNECTÉS -->
+<!-- 		<ui:include src="navbar.xhtml" /> à garder seulement le temps des tests => SEULEMENT DISPO POUR LES UTILISATEURS CONNECTÉS -->
 		<h:form>
 			<p>				
 				<h:commandButton action="login" value="Accès administrateur" /> <!-- redirige vers admin/home si ok -->
 			    <h:commandButton action="login.xhtml" value="Accès relais" /> <!-- redirige vers relay/home si ok -->
+
+				<h:commandButton value="connexion basique" action="relay/home.xhtml?faces-redirect=true"/>
 			</p>
 		</h:form>
 	</h:body>

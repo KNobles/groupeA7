@@ -41,73 +41,94 @@
 		<welcome-file>index.xhtml</welcome-file>
 	</welcome-file-list>
 	
-	<!-- SÉCURITÉ JAAS-->
-	<login-config>
-        <auth-method>FORM</auth-method>
-        <realm-name>groupeA7Realm</realm-name> <!-- nom utilisé dans la configuration de payara dans le navigateur -->
-        <form-login-config>
-            <form-login-page>/login.xhtml</form-login-page>
-            <form-error-page>/loginerror.xhtml</form-error-page> <!-- la page s'affiche en cas d'erreur du formulaire de login.xhtml -->
-        </form-login-config>
-    </login-config>
+	<!-- SECURITE BASIQUE sécurité basé sur l'url, demande d'authentification pour accéder à l'url -->
+	<security-constraint> <!-- dire ce qu'on veut sécuriser -->
+		<display-name>security</display-name>
+		<web-resource-collection>
+			<web-resource-name>basic security</web-resource-name>
+			<url-pattern>/faces/relay/*</url-pattern> <!--  page(s) à accéder -->
+		</web-resource-collection>
+		<auth-constraint> <!--  qui a accès à la page -->
+			<role-name>relay</role-name>
+		</auth-constraint>
+	</security-constraint>
 	
-    <security-role>
-        <description/>
-        <role-name>admin</role-name>
-    </security-role>
+	<login-config><!-- préciser le type d'authentification, la méthode -->
+		<auth-method>BASIC</auth-method>
+		<realm-name>Authentification required</realm-name>
+	</login-config>
+	
+	<security-role>
+		<role-name>relay</role-name>
+	</security-role> 
+	
+	<!-- SÉCURITÉ JAAS-->
+<!-- 	<login-config> -->
+<!--         <auth-method>FORM</auth-method> -->
+<!--         <realm-name>groupeA7Realm</realm-name> nom utilisé dans la configuration de payara dans le navigateur -->
+<!--         <form-login-config> -->
+<!--             <form-login-page>/login.xhtml</form-login-page> -->
+<!--             <form-error-page>/loginerror.xhtml</form-error-page> la page s'affiche en cas d'erreur du formulaire de login.xhtml -->
+<!--         </form-login-config> -->
+<!--     </login-config> -->
+	
+<!--     <security-role> -->
+<!--         <description/> -->
+<!--         <role-name>admin</role-name> -->
+<!--     </security-role> -->
     
-    <security-role>
-        <description/>
-        <role-name>relay</role-name>
-    </security-role>
+<!--     <security-role> -->
+<!--         <description/> -->
+<!--         <role-name>relay</role-name> -->
+<!--     </security-role> -->
     
-    <!-- ADMIN -->
-	<security-constraint>
-        <display-name>Restricted to Admin Pages</display-name>
-        <web-resource-collection>
-            <web-resource-name>Protected Admin Area</web-resource-name>
-            <description></description>
-            <url-pattern>/faces/admin/*</url-pattern>
-            <url-pattern>/faces/relay/*</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
-            <http-method>HEAD</http-method>
-            <http-method>PUT</http-method>
-            <http-method>OPTIONS</http-method>
-            <http-method>TRACE</http-method>
-            <http-method>DELETE</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-            <description/>
-            <role-name>admin</role-name>
-        </auth-constraint>
-        <user-data-constraint>
-            <transport-guarantee>NONE</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint>
+<!--     ADMIN -->
+<!-- 	<security-constraint> -->
+<!--         <display-name>Restricted to Admin Pages</display-name> -->
+<!--         <web-resource-collection> -->
+<!--             <web-resource-name>Protected Admin Area</web-resource-name> -->
+<!--             <description></description> -->
+<!--             <url-pattern>/faces/admin/*</url-pattern> -->
+<!--             <url-pattern>/faces/relay/*</url-pattern> -->
+<!--             <http-method>GET</http-method> -->
+<!--             <http-method>POST</http-method> -->
+<!--             <http-method>HEAD</http-method> -->
+<!--             <http-method>PUT</http-method> -->
+<!--             <http-method>OPTIONS</http-method> -->
+<!--             <http-method>TRACE</http-method> -->
+<!--             <http-method>DELETE</http-method> -->
+<!--         </web-resource-collection> -->
+<!--         <auth-constraint> -->
+<!--             <description/> -->
+<!--             <role-name>admin</role-name> -->
+<!--         </auth-constraint> -->
+<!--         <user-data-constraint> -->
+<!--             <transport-guarantee>NONE</transport-guarantee> -->
+<!--         </user-data-constraint> -->
+<!--     </security-constraint> -->
     
-    <!-- RELAIS -->
-    <security-constraint>
-        <display-name>Restricted to Relay Pages</display-name>
-        <web-resource-collection>
-            <web-resource-name>Protected Relay Area</web-resource-name>
-            <description/>
-            <url-pattern>/faces/relay/*</url-pattern> <!-- un relais n'a pas accès aux zones de l'admin -->
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
-            <http-method>HEAD</http-method>
-            <http-method>PUT</http-method>
-            <http-method>OPTIONS</http-method>
-            <http-method>TRACE</http-method>
-            <http-method>DELETE</http-method>
-        </web-resource-collection>
-        <auth-constraint>
-        	<description></description>
-        	<role-name>relay</role-name>
-        </auth-constraint>
-        <user-data-constraint>
-            <transport-guarantee>NONE</transport-guarantee>
-        </user-data-constraint>
-    </security-constraint>
+<!--     RELAIS -->
+<!--     <security-constraint> -->
+<!--         <display-name>Restricted to Relay Pages</display-name> -->
+<!--         <web-resource-collection> -->
+<!--             <web-resource-name>Protected Relay Area</web-resource-name> -->
+<!--             <description/> -->
+<!--             <url-pattern>/faces/relay/*</url-pattern> un relais n'a pas accès aux zones de l'admin -->
+<!--             <http-method>GET</http-method> -->
+<!--             <http-method>POST</http-method> -->
+<!--             <http-method>HEAD</http-method> -->
+<!--             <http-method>PUT</http-method> -->
+<!--             <http-method>OPTIONS</http-method> -->
+<!--             <http-method>TRACE</http-method> -->
+<!--             <http-method>DELETE</http-method> -->
+<!--         </web-resource-collection> -->
+<!--         <auth-constraint> -->
+<!--         	<description></description> -->
+<!--         	<role-name>relay</role-name> -->
+<!--         </auth-constraint> -->
+<!--         <user-data-constraint> -->
+<!--             <transport-guarantee>NONE</transport-guarantee> -->
+<!--         </user-data-constraint> -->
+<!--     </security-constraint> -->
     
 </web-app>
