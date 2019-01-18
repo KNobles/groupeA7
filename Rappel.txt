@@ -3,6 +3,3 @@ Créér/Copier un fichier classpath pour la fin.
 Optimisation : Interface pour ajouter / supprimer les sections? 
 	-> ces méthodes sont redondantes dans les classes "Course", "Seminary" et "User"
 	-> ajout récent de listes, vérifier que toutes les méthodes d'ajout/suppression sont présentes
-
-ATTENTION : les liens URL dans navbar on été mis pour que ça marche en localhost. 
-A changer lors du passage sur serveur distant
